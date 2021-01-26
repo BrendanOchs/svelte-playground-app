@@ -7,6 +7,7 @@ Brendan Ochs
 Elvis Mahmutovic
 Romina Diaz-Rivero
 Nathan Allen Bear
+Alex Szczesiul
 
 ## Getting started
 
