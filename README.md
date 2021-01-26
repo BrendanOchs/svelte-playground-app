@@ -9,6 +9,7 @@ Romina Diaz-Rivero
 Nathan Allen Bear
 Alex Szczesiul
 Logan Wyas
+Avdo Mesanovic
 
 ## Getting started
 
