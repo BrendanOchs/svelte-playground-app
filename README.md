@@ -6,6 +6,7 @@ The default template for setting up a [Sapper](https://github.com/sveltejs/sappe
 Brendan Ochs
 Elvis Mahmutovic
 Romina Diaz-Rivero
+Nathan Allen Bear
 
 ## Getting started
 
