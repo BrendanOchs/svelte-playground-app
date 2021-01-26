@@ -5,6 +5,7 @@ The default template for setting up a [Sapper](https://github.com/sveltejs/sappe
 ## Contributors
 Brendan Ochs
 Elvis Mahmutovic
+Romina Diaz-Rivero
 
 ## Getting started
 
