@@ -1,6 +1,7 @@
 <script>
 	import Nav from '../components/Nav.svelte';
 	import ShowHideButton from '../components/_showHideButton.svelte';
+	import ElvisCode from '../components/_ElvisCode.svelte';
 
 	export let segment;
 </script>
@@ -23,5 +24,5 @@
 </main>
 
 <ShowHideButton/>
-<ShowHideButton/>
-<ShowHideButton/>
+<ElvisCode/>
+<ElvisCode/>

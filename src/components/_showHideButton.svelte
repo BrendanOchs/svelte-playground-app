@@ -54,19 +54,19 @@
 		<div class="col-md-4">
 			<img class="img-responsive person" src="{personimg}" alt="Person">
 			<h2>Romina Diaz-Rivero</h2>
-			<button id="button-left" onclick="showVsHideLeft()" type="button" class="btn btn-light">Show Bio</button>
+			<button id="button-left" on:click={showVsHideLeft} type="button" class="btn btn-light">Show Bio</button>
 			<p id="bio-left"></p>
 		</div>
 		<div class="col-md-4">
 			<img class="img-responsive person" src="{personimg}" alt="Person">
 			<h2>John Doe</h2>
-			<button id="button-center" onclick="showVsHideCenter()" type="button" class="btn btn-light">Show Bio</button>
+			<button id="button-center" on:click={showVsHideCenter} type="button" class="btn btn-light">Show Bio</button>
 			<p id="bio-center"></p>
 		</div>
 		<div class="col-md-4">
 			<img class="img-responsive person" src="{personimg}" alt="Person">
 			<h2>Name Filler</h2>
-			<button id="button-right" onclick="showVsHideRight()" type="button" class="btn btn-light">Show Bio</button>
+			<button id="button-right" on:click={showVsHideRight} type="button" class="btn btn-light">Show Bio</button>
 			<p id="bio-right"></p>
 		</div>
 	</div>
