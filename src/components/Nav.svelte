@@ -15,14 +15,14 @@
 					<Title>Static</Title>
 				</Section>
 				<Section align="end" toolbar>
-					<Button>
-						<Label>Button 1</Label>
+					<Button aria-current="{segment === undefined ? 'page' : undefined}" href=".">
+						<Label>Home</Label>
 					</Button>
-					<Button>
-						<Label>Button 2</Label>
+					<Button aria-current="{segment === 'about' ? 'page' : undefined}" href="about">
+						<Label>About</Label>
 					</Button>
-					<Button>
-						<Label>Button 3</Label>
+					<Button aria-current="{segment === 'blog' ? 'page' : undefined}" href="blog">
+						<Label>Blog</Label>
 					</Button>
 				</Section>
 			</Row>
