@@ -11,17 +11,45 @@ body {
 }
 
 .flex-item {
-  background: #da2121;
+  background: #6798e0;
   padding: 5px;
   margin: 5px;
-  /* width: auto; */
-  height: 150px;
+  height: auto;
   margin-top: 10px;
-  line-height: 150px;
-  color: white;
-  min-width: 400px;
-  font-weight: bold;
-  font-size: 3em;
+  color: #000000;
+  /* min-width: 300px; */
+  /* font-size: 3em; */
   text-align: center;
   flex: 1 1 0;
+  order: 2;
+}
+
+.prominent {
+  flex-grow: 2;
+}
+
+.text-center {
+  text-align: center;
+}
+
+@media only screen and (max-width: 1200px) {
+  .flex-item {
+    width: 100%;
+    min-width: 95%;
+  }
+
+  .prominent {
+    order: 1;
+  }
+}
+
+@media only screen and (min-width: 1201px) {
+  .flex-item {
+    width: 50%;
+    min-width: 45%;
+  }
+
+  .prominent {
+    order: 1;
+  }
 }
