@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
     let movies = [{
   "id": 1,
   "name": "10",
@@ -89,4 +89,17 @@
         <button href="">See Details</button>
     </div>
     {/each}
-</div>
+</div> -->
+
+<style>
+  button {
+    margin: 0;
+    position: absolute;
+    margin-top: 30px;
+    left: 50%;
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+  }
+</style>
+
+<a href="inventory"><button>See Inventory</button></a>

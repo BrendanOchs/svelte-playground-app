@@ -18,6 +18,10 @@
     h6, p, button {
         margin-top: 10px;
     }
+    .flex-item {
+        background-color: #dadada;
+        border: 1px #000000 solid;
+    }
 </style>
 
 <div class="flex-container">

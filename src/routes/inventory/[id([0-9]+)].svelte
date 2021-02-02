@@ -15,20 +15,28 @@
         font-size: 30px;
     }
     .spacing {
-        margin: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+    }
+    .norm-fw {
+        font-weight: 500;
+    }
+    .text-left {
+        text-align: left;
     }
 </style>
 
 <a href="inventory"><button>←</button></a>
 <h1>
 {#await promise}
-    <h1>Loading...</h1>
+    <h4 class="text-center">Loading...</h4>
 {:then movie}
     <div class="text-center">
-        <h3>{movie.name}</h3>
-        <h6>{movie.genre}</h6>
-        <h4>"{movie.slogan}"</h4>
-        <h6 class="spacing">{movie.desc}</h6>
+        <h3><i>{movie.name}</i></h3>
+        <h6 class="norm-fw">{movie.genre}</h6>
+        <h4 class="norm-fw">"{movie.slogan}"</h4>
+        <h6 class="spacing norm-fw text-left">{movie.desc}</h6>
     </div>
 {/await}
 </h1>
