@@ -20,14 +20,14 @@ import Reels from "./Reels.svelte";
 					<Title>Static</Title>
 				</Section>
 				<Section align="end" toolbar>
-					<Button>
-						<Label>Search</Label>
+					<Button aria-current="{segment === undefined ? 'page' : undefined}" href=".">
+						<Label>Home</Label>
 					</Button>
-					<Button>
-						<Label>Facts</Label>
+					<Button aria-current="{segment === 'about' ? 'page' : undefined}" href="about.svelte">
+						<Label>About</Label>
 					</Button>
-					<Button on:click={pageSwitch}>
-						<Label>Reels</Label>
+					<Button aria-current="{segment === 'reels' ? 'page' : undefined}" href="blog">
+						<Label>Blog</Label>
 					</Button>
 				</Section>
 			</Row>
