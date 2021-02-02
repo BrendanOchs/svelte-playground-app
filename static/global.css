@@ -11,20 +11,31 @@ body {
 }
 
 .flex-item {
-  background: #da2121;
+  background: gray;
   padding: 5px;
   margin: 5px;
-  /* width: auto; */
   margin-top: 10px;
   line-height: 600px;
   color: white;
-  min-width: 250px;
   font-weight: bold;
   font-size: 3em;
   text-align: center;
   flex: 1 1 auto;
+  outline: 1px solid black;
 }
 
 .flex-item.center {
   flex-grow:2;
+}
+
+@media screen and (max-width:992px) {
+  .flex-item {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width:600px) {
+  .flex-item {
+    width: 100%;
+  }
 }
