@@ -8,33 +8,5 @@ body {
   justify-content: space-between;
   padding: 0;
   margin: 0;
-}
-
-.flex-item {
-  background: gray;
-  padding: 5px;
-  margin: 5px;
-  margin-top: 10px;
-  color: white;
-  font-weight: bold;
-  font-size: 3em;
-  text-align: center;
-  flex: 1 1 auto;
-  outline: 1px solid black;
-}
-
-.flex-item.center {
-  flex-grow:2;
-}
-
-@media screen and (max-width:992px) {
-  .flex-item {
-    width: 50%;
-  }
-}
-
-@media screen and (max-width:600px) {
-  .flex-item {
-    width: 100%;
-  }
+  background-color: gray;
 }
