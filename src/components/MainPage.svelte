@@ -1,9 +1,9 @@
 <div class="flex-container">
     {#each shoes as shoe}
     <div class="flex-item text-center">
-        <h4>{shoe.brand}</h4>
+        <h3>{shoe.brand}</h3>
         <p>{shoe.color}</p>
-        <h6>"{shoe.material}"</h6>
+        <p>{shoe.material}</p>
         <button href="">See Details</button>
     </div>
     {/each}
@@ -11,60 +11,28 @@
   
   <script>
       let shoes = [{
-    "brand": "Goodliffe",
-    "color": "Maroon",
-    "material": "CLS-Class",
-  }, {
-    "brand": "Malamore",
-    "color": "Green",
-    "material": "Corvette",
-  }, {
-    "brand": "Tench",
-    "color": "Puce",
-    "material": "62",
-  }, {
-    "brand": "Runnett",
-    "color": "Crimson",
-    "material": "Tempo",
-  }, {
-    "brand": "Nafziger",
-    "color": "Orange",
-    "material": "300",
-  }, {
-    "brand": "Culbert",
+    "brand": "Nike",
     "color": "Red",
-    "material": "X5",
+    "material": "Flyknit",
   }, {
-    "brand": "Hudleston",
-    "color": "Turquoise",
-    "material": "Prelude",
-  }, {
-    "brand": "Escolme",
-    "color": "Goldenrod",
-    "material": "Mighty Max Macro",
-  }, {
-    "brand": "Duffett",
-    "color": "Puce",
-    "material": "Jimmy",
-  }, {
-    "brand": "Martyntsev",
+    "brand": "Adidas",
     "color": "Green",
-    "material": "Caravan",
+    "material": "Leather",
   }, {
-    "brand": "Gibling",
-    "color": "Pink",
-    "material": "T100 Xtra",
+    "brand": "Vans",
+    "color": "Black",
+    "material": "Synthetic Leather",
   }, {
-    "brand": "Cunnah",
-    "color": "Khaki",
-    "material": "M3",
+    "brand": "Sperry",
+    "color": "Brown",
+    "material": "Cardboard",
   }, {
-    "brand": "Olexa",
-    "color": "Yellow",
-    "material": "CR-V",
+    "brand": "Under Armour",
+    "color": "Orange",
+    "material": "Synthetic Leather",
   }, {
-    "brand": "Orwin",
-    "color": "Indigo",
-    "material": "Ram 1500",
+    "brand": "UGG",
+    "color": "White",
+    "material": "Fur",
   }]
   </script>
