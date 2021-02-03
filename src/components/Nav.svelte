@@ -3,9 +3,6 @@
 	import Button, { Label } from "@smui/button";
 	import TopAppBar, { Row, Section, Title } from "@smui/top-app-bar";
 	import IconButton from "@smui/icon-button";
-import About from "../routes/about.svelte";
-import Reels from "./Reels.svelte";
-
 	export function pageSwitch(){
         
     }
@@ -23,7 +20,7 @@ import Reels from "./Reels.svelte";
 					<Button aria-current="{segment === undefined ? 'page' : undefined}" href=".">
 						<Label>Home</Label>
 					</Button>
-					<Button aria-current="{segment === 'about' ? 'page' : undefined}" href="about.svelte">
+					<Button aria-current="{segment === 'about' ? 'page' : undefined}" href="about">
 						<Label>About</Label>
 					</Button>
 					<Button aria-current="{segment === 'reels' ? 'page' : undefined}" href="blog">
