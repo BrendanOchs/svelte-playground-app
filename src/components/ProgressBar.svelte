@@ -1,6 +1,6 @@
 <script>
     export let percent;
-    let color;
+    let color = '#202020';
     function barColor(){
         if(percent < 20){
             color = '#cf2020';
@@ -9,20 +9,12 @@
             color = '#bfbf20';
         }
         else{
-            color = '#2020cf';
+            color = '#20cf20';
         }
     }
-    myElement.style.setProperty('--cBar', color)
+    import LinearProgress from '@smui/linear-progress';
+
 </script>
-<style>
-    myElement{
-        --cBar: ;
-    }
-    progress[value]{
-        appearance:none;
-        background-color:var(--cBar);
 
-    }
-</style>
 
-<progress value={percent} max="100"></progress>
+<LinearProgress style="color: #ff0000"  progress={percent}/>

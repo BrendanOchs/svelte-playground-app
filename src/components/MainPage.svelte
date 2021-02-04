@@ -9,4 +9,4 @@
     <div class="flex-item">3</div>
 </div>
 
-<ProgressBar percent={50}/>
+<ProgressBar percent={.5}/>
