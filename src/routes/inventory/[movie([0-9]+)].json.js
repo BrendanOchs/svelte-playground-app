@@ -6,10 +6,8 @@ movies.forEach(movie => {
 });
 
 export function get(req, res, next) {
-	// the `slug` parameter is available because
-	// this file is called [slug].json.js
 	let { movie } = req.params;
-	let number = movie++
+	let number = movie++;
 	if (lookup.has(number)) {
 		res.writeHead(200, {
 			'Content-Type': 'application/json'

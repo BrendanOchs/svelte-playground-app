@@ -19,18 +19,18 @@
         margin-top: 10px;
     }
     .flex-item {
-        background-color: #dadada;
+        background-color: #78b1e7;
         border: 1px #000000 solid;
     }
 </style>
 
 <div class="flex-container">
     {#each movies as movie}
-    <div class="flex-item text-center">
-        <h4>{movie.name}</h4>
-        <p>{movie.genre}</p>
-        <h6>"{movie.slogan}"</h6>
-        <a href="inventory/{movie.id}"><button>See Details</button></a>
-    </div>
+        <div class="flex-item text-center">
+            <h4>{movie.name}</h4>
+            <p>{movie.genre}</p>
+            <h6>"{movie.slogan}"</h6>
+            <a href="inventory/{movie.id}"><button>See Details</button></a>
+        </div>
     {/each}
 </div>
