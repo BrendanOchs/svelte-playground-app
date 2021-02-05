@@ -1,15 +1,29 @@
-<div class="flex-container">
-    {#each shoes as shoe}
-    <div class="flex-item text-center">
-        <h3>{shoe.brand}</h3>
-        <p>{shoe.color}</p>
-        <p>{shoe.material}</p>
-        <button href="">See Details</button>
+<section>
+  <div>
+    <DataTable table$aria-label="Shoes"></DataTable>
+    <h2>Data Table</h2>
+      <Head>
+        <Row>
+          <Cell><h3>Brand</h3></Cell>
+          <Cell><h3>Color</h3></Cell>
+          <Cell><h3>Material</h3></Cell>
+        </Row>
+      </Head>
+      <Body>
+          {#each shoes as shoe}
+            <Row>
+              <Cell>{shoe.brand}</Cell>
+              <Cell><p>{shoe.color}</p></Cell>
+              <Cell><p>{shoe.material}</p></Cell>
+            </Row>
+          {/each}
+      </Body>
     </div>
-    {/each}
-  </div>
+</section>
   
   <script>
+    import DataTable, {Head, Body, Row, Cell} from '@smui/data-table';
+
       let shoes = [{
     "brand": "Nike",
     "color": "Red",
