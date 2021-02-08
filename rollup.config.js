@@ -9,6 +9,7 @@ import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
 import postcss from "rollup-plugin-postcss";
+import autoPreprocess from 'svelte-preprocess';
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
@@ -34,7 +35,8 @@ export default {
 					hydratable: true,
 					css: true
 				},
-				emitCss: false
+				emitCss: false,
+				preprocess: autoPreprocess()
 			}),
 			url({
 				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
