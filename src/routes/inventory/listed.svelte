@@ -1,14 +1,31 @@
 <script>
     import List, {Item, Text, PrimaryText, SecondaryText} from '@smui/list';
+    import { stores, goto } from '@sapper/app';
+    const { page } = stores();
+    import movies from './_movies.js';
+
     let selectedIndex = 0;
     var movie;
-    import movies from './_movies.js';
-    changeWindow(0);
+    if ($page.query.movie) {
+        let start = $page.query.movie.split('_').join(' ');
+        let choice;
+        movies.forEach((mov) => {
+            if (mov.name === start) {
+                choice = mov.id - 1;
+            }
+        })
+        changeWindow(choice)
+    }
+    else {
+        changeWindow(0);
+    }
+
     async function changeWindow(index) {
         selectedIndex = index;
         // if (process.browser) {
             movie = await getData(index).catch(err => console.log(err))
         // }
+        editUrl(index);
     }
 
     async function getData(index) {
@@ -20,6 +37,11 @@
         else {
             return res.error
         }
+    }
+
+    function editUrl (index) {
+        let result = movies[index].name.split(" ").join('_');
+        goto(`inventory/listed?movie=${result}`);
     }
 </script>
 
