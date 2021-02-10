@@ -1,5 +1,6 @@
 <script>
   import DataTable, { Head, Body, Row, Cell } from "@smui/data-table";
+  import ProgressBar from "./ProgressBar.svelte";
 
   let allDeals = [
     {
@@ -39,7 +40,7 @@
         {#each allDeals as item}
           <Row>
               <Cell>{item.dealName}</Cell>
-              <Cell>{item.dealCompletion}</Cell>
+              <Cell><ProgressBar percent={item.dealCompletion}/></Cell>
           </Row>
         {/each}
       </Body>
