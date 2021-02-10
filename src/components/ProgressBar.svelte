@@ -3,18 +3,31 @@
     let color = '#202020';
     function barColor(){
         if(percent < 20){
-            color = '#cf2020';
+            color = '#ef2020';
         }
         else if(percent < 60){
-            color = '#bfbf20';
+            color = '#dfef20';
         }
         else{
-            color = '#20cf20';
+            color = '#20ef20';
         }
     }
-    import LinearProgress from '@smui/linear-progress';
-
+    barColor();
 </script>
+<style>
+    #buffer{
+        width: 100%;
+        height: 50%;
+        background: #c9c9c9
+    }
+    #bar{
+        margin-left: 0;
+        margin-right: auto;
+    }
+</style>
 
-
-<LinearProgress style="color: #ff0000"  progress={percent}/>
+<div id="buffer">
+    <div id="bar" style="background: {color}; width: {percent}%;">
+        <p>.</p>
+    </div>
+</div>
