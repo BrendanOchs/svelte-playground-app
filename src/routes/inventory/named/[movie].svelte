@@ -1,47 +1,27 @@
-<script>
+<script context="module">
     import List, {Item, Text, PrimaryText, SecondaryText} from '@smui/list';
     import { stores, goto } from '@sapper/app';
-    const { page } = stores();
-    import movies from './_movies.js';
+    import movies from '../_movies.js';
+    var selectedIndex = 0;
+    var extra;
 
-    let selectedIndex = 0;
-    var movie;
-    if ($page.query.movie) {
-        let start = $page.query.movie.split('_').join(' ');
-        let choice;
+    export async function preload(page, session) {
+        let val = page.params.movie.split('_').join(' ');
         movies.forEach((mov) => {
-            if (mov.name === start) {
-                choice = mov.id - 1;
+            if (mov.name === val) {
+                extra = mov;
+                selectedIndex = mov.id - 1
             }
         })
-        changeWindow(choice)
     }
-    else {
-        changeWindow(0);
-    }
+</script>
 
-    async function changeWindow(index) {
-        selectedIndex = index;
-        // if (process.browser) {
-            movie = await getData(index).catch(err => console.log(err))
-        // }
-        editUrl(index);
-    }
-
-    async function getData(index) {
-        let res = await fetch(`inventory/${index+1}.json`);
-        if (res.ok) {
-            let response = await res.json();
-            return response;
-        }
-        else {
-            return res.error
-        }
-    }
-
+<script>
+    var movie = extra;
     function editUrl (index) {
         let result = movies[index].name.split(" ").join('_');
-        goto(`inventory/listed?movie=${result}`);
+        goto(`inventory/named/${result}`);
+        movie = movies[index];
     }
 </script>
 
@@ -66,7 +46,7 @@
 <div class="split">
     <List twoLine singleSelection>
         {#each movies as movie, i}
-            <Item on:SMUI:action={() => changeWindow(i)} selected={selectedIndex === i}>
+            <Item on:SMUI:action={() => editUrl(i)} selected={selectedIndex === i}>
                 <Text>
                     <PrimaryText>{movie.name}</PrimaryText>
                     <SecondaryText>{movie.genre}</SecondaryText>
@@ -75,13 +55,11 @@
         {/each}
     </List>
     <div>
-        {#if movie}
-            <div class="text-center">
-                <h3 class="mdc-typography--headline3"><i>{movie.name}</i></h3>
+        <div class="text-center">
+            <h3 class="mdc-typography--headline3"><i>{movie.name}</i></h3>
                 <p class="mdc-typography--subtitle1">{movie.genre}</p>
                 <h6 class="mdc-typography--headline6">"{movie.slogan}"</h6>
                 <p class="text-left spacing mdc-typography--body1">{movie.desc}</p>
             </div>
-        {/if}
     </div>
 </div>
