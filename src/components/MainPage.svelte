@@ -1,7 +1,7 @@
 <script>
-import Table from "./Table.svelte";
-
     export let segment;
+    import ProgressBar from "../components/ProgressBar.svelte";
+    
 </script>
 <div class="flex-container">
     <div class="flex-item">1</div>
@@ -9,4 +9,4 @@ import Table from "./Table.svelte";
     <div class="flex-item">3</div>
 </div>
 
-<Table/>
+<ProgressBar percent={70}/>
