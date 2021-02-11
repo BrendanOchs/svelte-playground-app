@@ -2,26 +2,26 @@
   import DataTable, { Head, Body, Row, Cell } from "@smui/data-table";
   import ProgressBar from "./ProgressBar.svelte";
 
-  let allDeals = [
+  let deals = [
     {
-      dealName: "Jaamie",
-      dealCompletion: 13,
+      name: "Jaamie",
+      percentDone: 13,
     },
     {
-      dealName: "Mars",
-      dealCompletion: 88,
+      name: "Mars",
+      percentDone: 88,
     },
     {
-      dealName: "Dal",
-      dealCompletion: 65,
+      name: "Dal",
+      percentDone: 65,
     },
     {
-      dealName: "Robbie",
-      dealCompletion: 32,
+      name: "Robbie",
+      percentDone: 32,
     },
     {
-      dealName: "Anette",
-      dealCompletion: 50,
+      name: "Anette",
+      percentDone: 50,
     },
   ];
 </script>
@@ -31,16 +31,16 @@
     <DataTable table$aria-label="ObjectTable">
       <Head>
         <Row>
-          {#each Object.keys(allDeals[0]) as heading}
+          {#each Object.keys(deals[0]) as heading}
             <Cell>{heading}</Cell>
           {/each}
         </Row>
       </Head>
       <Body>
-        {#each allDeals as item}
+        {#each deals as item}
           <Row>
-              <Cell>{item.dealName}</Cell>
-              <Cell><ProgressBar percent={item.dealCompletion}/></Cell>
+              <Cell>{item.name}</Cell>
+              <Cell><ProgressBar percent={item.percentDone}/></Cell>
           </Row>
         {/each}
       </Body>
