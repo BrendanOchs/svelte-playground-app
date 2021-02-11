@@ -1,6 +1,6 @@
 <script context="module">
     import List, {Item, Text, PrimaryText, SecondaryText} from '@smui/list';
-    import { stores, goto } from '@sapper/app';
+    import { goto } from '@sapper/app';
     import movies from '../_movies.js';
     var selectedIndex = 0;
     var extra;
@@ -10,7 +10,7 @@
         movies.forEach((mov) => {
             if (mov.name === val) {
                 extra = mov;
-                selectedIndex = mov.id - 1
+                selectedIndex = mov.id;
             }
         })
     }
@@ -45,8 +45,8 @@
 </style>
 <div class="split">
     <List twoLine singleSelection>
-        {#each movies as movie, i}
-            <Item on:SMUI:action={() => editUrl(i)} selected={selectedIndex === i}>
+        {#each movies as movie}
+            <Item on:SMUI:action={() => editUrl(movie.id)} selected={selectedIndex === movie.id}>
                 <Text>
                     <PrimaryText>{movie.name}</PrimaryText>
                     <SecondaryText>{movie.genre}</SecondaryText>

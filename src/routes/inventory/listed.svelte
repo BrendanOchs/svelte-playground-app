@@ -11,7 +11,7 @@
         let choice;
         movies.forEach((mov) => {
             if (mov.name === start) {
-                choice = mov.id - 1;
+                choice = mov.id;
             }
         })
         changeWindow(choice)
@@ -29,7 +29,7 @@
     }
 
     async function getData(index) {
-        let res = await fetch(`inventory/${index+1}.json`);
+        let res = await fetch(`inventory/${index}.json`);
         if (res.ok) {
             let response = await res.json();
             return response;
