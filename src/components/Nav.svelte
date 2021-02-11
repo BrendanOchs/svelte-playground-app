@@ -3,6 +3,9 @@
 	import Button, { Label } from "@smui/button";
 	import TopAppBar, { Row, Section, Title } from "@smui/top-app-bar";
 	import IconButton from "@smui/icon-button";
+	export function pageSwitch(){
+        
+    }
 </script>
 
 <div class="flexy">
@@ -17,11 +20,14 @@
 					<Button aria-current="{segment === undefined ? 'page' : undefined}" href=".">
 						<Label>Home</Label>
 					</Button>
-					<Button aria-current="{segment === 'about' ? 'page' : undefined}" href="about">
-						<Label>About</Label>
+					<Button aria-current="{segment === 'reels' ? 'page' : undefined}" href="reels">
+						<Label>Reels</Label>
 					</Button>
-					<Button aria-current="{segment === 'blog' ? 'page' : undefined}" href="blog">
-						<Label>Blog</Label>
+					<Button aria-current="{segment === 'facts' ? 'page' : undefined}" href="facts">
+						<Label>Facts</Label>
+					</Button>
+					<Button aria-current="{segment === 'search' ? 'page' : undefined}" href="search">
+						<Label>Search</Label>
 					</Button>
 				</Section>
 			</Row>

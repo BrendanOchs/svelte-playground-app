@@ -6,6 +6,6 @@
 </style>
 <div>
     <h1>
-        facts
+        search
     </h1>
 </div>
