@@ -1,56 +1,52 @@
 <script>
-    let tableItems = [{
-  "First Name": "Eugenie",
-  "Last Name": "Hymor"
-}, {
-  "First Name": "Joanie",
-  "Last Name": "Airdrie"
-}, {
-  "First Name": "Maris",
-  "Last Name": "Paik"
-}, {
-  "First Name": "Regan",
-  "Last Name": "Buckbee"
-}, {
-  "First Name": "Anette",
-  "Last Name": "Melesk"
-}]
+  import DataTable, { Head, Body, Row, Cell } from "@smui/data-table";
+  import ProgressBar from "./ProgressBar.svelte";
+
+  let allDeals = [
+    {
+      dealName: "Jaamie",
+      dealCompletion: 13,
+    },
+    {
+      dealName: "Mars",
+      dealCompletion: 88,
+    },
+    {
+      dealName: "Dal",
+      dealCompletion: 65,
+    },
+    {
+      dealName: "Robbie",
+      dealCompletion: 32,
+    },
+    {
+      dealName: "Anette",
+      dealCompletion: 50,
+    },
+  ];
 </script>
-<style>
-table, th, td {
-    border: 1px solid;
-    border-collapse: collapse;
-    width:50%;
-    margin-left: 25%;
-    margin-right:25%;
-    margin-top: 50px;
-    padding:10px;
-}
-tbody tr:nth-child(even){
-    background-color: #cfcfcf;
-}
-tbody tr:nth-child(odd){
-    background-color: #dfdfdf;
-}
-</style>
 
 <body>
-    <table>
-      <thead>
-        <tr>
-            {#each Object.keys(tableItems[0]) as columnHeading}
-          <th>{columnHeading}</th>
+  <div class="flex-container">
+    <DataTable table$aria-label="ObjectTable">
+      <Head>
+        <Row>
+          {#each Object.keys(allDeals[0]) as heading}
+            <Cell>{heading}</Cell>
           {/each}
-        </tr>
-      </thead>
-      <tbody>
-          {#each Object.values(tableItems) as row}
-        <tr>
-            {#each Object.values(row) as cell}
-          <td>{cell}</td>
-          {/each}
-        </tr>
+        </Row>
+      </Head>
+      <Body>
+        {#each allDeals as item}
+          <Row>
+              <Cell>{item.dealName}</Cell>
+              <Cell><ProgressBar percent={item.dealCompletion}/></Cell>
+          </Row>
         {/each}
-      </tbody>
-    </table>
-  </body>   
+      </Body>
+    </DataTable>
+  </div>
+</body>
+
+<style>
+</style>
