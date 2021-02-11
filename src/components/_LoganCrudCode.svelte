@@ -1,5 +1,5 @@
 <!-- Code by Logan Wyas -->
-<script>
+<!-- <script>
     import List, { Item, Text, PrimaryText, SecondaryText } from "@smui/list";
     import Textfield from "@smui/textfield";
     import Button, { Label } from "@smui/button";
@@ -124,4 +124,4 @@
     .m-10 {
         margin: 10px;
     }
-</style>
+</style> -->

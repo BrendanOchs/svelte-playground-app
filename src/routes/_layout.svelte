@@ -28,5 +28,6 @@
 <ShowHideButton/>
 <ElvisCode/>
 
-<LoganCode/>
+<!-- <LoganCode/> -->
 <Crud/>
+

@@ -1,4 +1,10 @@
 <script>
+    import Card, {Content} from '@smui/card';
+    import Button, {Label} from '@smui/button';
+    import List, {Item, Text} from '@smui/list';
+
+    let clicked = 0;
+
     let shoes = [
         {
             brand: "Goodliffe",
@@ -95,6 +101,7 @@
     let searchedShoe = "";
     let brand = "";
     let color = "";
+    let material = "";
     let size = 0;
 
     let i = 0;
@@ -111,20 +118,20 @@
     $: reset_inputs(selected);
 
     function create() {
-        shoes = shoes.concat({ brand, color, size });
+        shoes = shoes.concat({ brand, color, material, size });
         i = shoes.length - 1;
-        brand = color = "";
+        brand = color = material = "";
         size = 0;
     }
 
     function update() {
-        shoes[i] = { brand, color, size};
+        shoes[i] = { brand, color, material, size };
     }
 
     function remove() {
         shoes = [...shoes.slice(0, i), ...shoes.slice(i + 1)];
 
-        brand = color = "";
+        brand = color = material = "";
         size = 0;
         i = Math.min(i, shoes.length - 1);
     }
@@ -132,11 +139,42 @@
     function reset_inputs(shoe) {
         brand = shoe ? shoe.brand : "";
         color = shoe ? shoe.color : "";
+        material = shoe ? shoe.material : "";
         size = shoe ? shoe.size : 0;
     }
 </script>
 
 <input placeholder="filter prefix" bind:value={searchedShoe}>
+
+<style>
+    .card-container {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 500px;
+      min-width: 380px;
+      background-color: #f8f8f8;
+      margin-right: 20px;
+      margin-bottom: 20px;
+    }
+</style>
+
+<div class="card-container">
+    <div>
+      <div style="width: 320px;">
+        A card with a list as content:
+      </div>
+      <Card style="width: 320px;">
+        <Content component={List}>
+          {#each shoes as shoe}
+            <Item on:click={() => clicked++}>
+              <Text>{shoe.brand}, {shoe.color}, {shoe.material}, {shoe.size}</Text>
+            </Item>
+          {/each}
+        </Content>
+      </Card>
+    </div>
+  </div>
 
 <select bind:value={i} size={5}>
 	{#each filteredShoes as shoe, i}
@@ -149,7 +187,7 @@
 <label><input bind:value={size} placeholder="size"></label>
 
 <div class='buttons'>
-	<button on:click={create} disabled="{!brand || !color || !size}">create</button>
-	<button on:click={update} disabled="{!brand || !color || !size || !selected}">update</button>
-	<button on:click={remove} disabled="{!selected}">delete</button>
+	<Button on:click={create} disabled="{!brand || !color || !size}">Add</Button>
+	<Button on:click={update} disabled="{!brand || !color || !size || !selected}">Update</Button>
+	<Button on:click={remove} disabled="{!selected}">Remove</Button>
 </div>
