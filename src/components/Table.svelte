@@ -15,7 +15,6 @@
   "First Name": "Anette",
   "Last Name": "Melesk"
 }]
-
 </script>
 <style>
 table, th, td {
