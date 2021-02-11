@@ -5,7 +5,7 @@
     import movies from './_movies.js';
     let movs = [...movies]
     let filter = "";
-    $: selectedMovie = movs[0];
+    $: selectedMovie = movs.includes(selectedMovie) ? selectedMovie : movs[0];
     $: filtered = filter ? movs.filter(mov => {
         return mov.name.toLowerCase().includes(filter.toLowerCase())
     }) : movs;
@@ -23,13 +23,20 @@
     }
 
     function create() {
+        let id;
+        if (movs.length === 0) {
+            id = 0;
+        }
+        else {
+            id = movs[movs.length - 1].id + 1
+        }
         movs = [...movs,
             {
                 name: name,
                 genre: genre,
                 desc: desc,
                 slogan: slogan,
-                id: movs[movs.length - 1].id + 1
+                id: id
             }
         ]
         selectedMovie = movs[movs.length - 1];
@@ -81,25 +88,25 @@
 <div class="split">
     <List twoLine singleSelection>
         {#if filtered}
-        {#each filtered as movie}
-            <Item on:SMUI:action={() => selectedMovie = movie} selected={selectedMovie === movie}>
-                <Text>
-                    <PrimaryText>{movie.name}</PrimaryText>
-                    <SecondaryText>{movie.genre}</SecondaryText>
-                </Text>
-            </Item>
-        {/each}
+            {#each filtered as movie}
+                <Item on:SMUI:action={() => selectedMovie = movie} selected={selectedMovie === movie}>
+                    <Text>
+                        <PrimaryText>{movie.name}</PrimaryText>
+                        <SecondaryText>{movie.genre}</SecondaryText>
+                    </Text>
+                </Item>
+            {/each}
         {/if}
     </List>
     <div class="m-10">
         <div>
-        <Textfield bind:value={filter} label="Filter" />
+            <Textfield bind:value={filter} label="Filter" />
         </div>
         <Textfield bind:value={name} label="Name" />
         <Textfield bind:value={genre} label="Genre" />
         <Textfield bind:value={slogan} label="Slogan" />
         <div class="mt-20">
-        <Textfield textarea fullwidth bind:value={desc} label="Description" />
+            <Textfield textarea fullwidth bind:value={desc} label="Description" />
         </div>
         <Button on:click={() => create()}><Label>Create</Label></Button>
         <Button on:click={() => update()}><Label>Update</Label></Button>
