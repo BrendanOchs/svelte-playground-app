@@ -2,8 +2,8 @@
 	import Nav from '../components/Nav.svelte';
 	import ShowHideButton from '../components/_showHideButton.svelte';
 	import ElvisCode from '../components/_ElvisCode.svelte';
-	import Crud from '../components/_Crud.svelte';
-	import LoganCode from '../components/_LoganCrudCode.svelte'
+	import Crud from './_Crud.svelte';
+	import LoganCode from './_LoganCrudCode.svelte'
 
 	export let segment;
 </script>
