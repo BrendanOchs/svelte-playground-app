@@ -71,8 +71,7 @@
     }
 </script>
 
-<style type="text/scss">
-    @import "@material/typography/mdc-typography";
+<style>
     .split {
         display: grid;
         grid-template-columns: 1fr 1fr;
