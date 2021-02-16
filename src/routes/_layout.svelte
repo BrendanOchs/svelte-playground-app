@@ -25,8 +25,8 @@
 	<slot></slot>
 </main>
 
-<ShowHideButton/>
-<ElvisCode/>
+<!-- <ShowHideButton/>
+<ElvisCode/> -->
 
 <!-- <LoganCode/> -->
 <Crud/>

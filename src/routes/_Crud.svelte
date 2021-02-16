@@ -144,7 +144,26 @@
     }
 </script>
 
-<input placeholder="filter prefix" bind:value={searchedShoe}>
+<div class="search buttons"></div>
+
+<input placeholder="Search by Brand" bind:value={searchedShoe}>
+
+<select bind:value={i} size={5}>
+	{#each filteredShoes as shoe, i}
+		<option value={i}>{shoe.brand}, {shoe.color}, {shoe.material}, {shoe.size}</option>
+	{/each}
+</select>
+
+<label><input bind:value={brand} placeholder="brand"></label>
+<label><input bind:value={color} placeholder="color"></label>
+<label><input bind:value={material} placeholder="material"></label>
+<label><input bind:value={size} placeholder="size"></label>
+
+<div class='buttons'>
+	<button on:click={create} disabled="{!brand || !color || !size || !material}">Add</button>
+	<button on:click={update} disabled="{!brand || !color || !size || !material || !selected}">Update</button>
+	<button on:click={remove} disabled="{!selected}">Remove</button>
+</div> 
 
 <style>
     .card-container {
@@ -158,6 +177,8 @@
       margin-bottom: 20px;
     }
 </style>
+
+<input placeholder="Search by Brand" bind:value={searchedShoe}>
 
 <div class="card-container">
     <div>
@@ -190,4 +211,4 @@
 	<Button on:click={create} disabled="{!brand || !color || !size}">Add</Button>
 	<Button on:click={update} disabled="{!brand || !color || !size || !selected}">Update</Button>
 	<Button on:click={remove} disabled="{!selected}">Remove</Button>
-</div>
+</div> 
