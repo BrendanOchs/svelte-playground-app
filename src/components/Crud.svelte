@@ -1,9 +1,33 @@
 <script>
     import List, {Item, Text} from '@smui/list';
 
-    let clicked = 0;
+    let clickedItem = "";
 
-    import shoes from './MainPage.svelte';
+    let shoeList = [{
+    "brand": "Nike",
+    "color": "Red",
+    "material": "Flyknit",
+  }, {
+    "brand": "Adidas",
+    "color": "Green",
+    "material": "Leather",
+  }, {
+    "brand": "Vans",
+    "color": "Black",
+    "material": "Synthetic Leather",
+  }, {
+    "brand": "Sperry",
+    "color": "Brown",
+    "material": "Cardboard",
+  }, {
+    "brand": "Under Armour",
+    "color": "Orange",
+    "material": "Synthetic Leather",
+  }, {
+    "brand": "UGG",
+    "color": "White",
+    "material": "Fur",
+  }]
 
     let searchedShoe = "";
     let brand = "";
@@ -12,29 +36,29 @@
 
     let i = 0;
 
-    $: filteredShoes = searchedShoe
-        ? shoes.filter((shoe) => {
+    $: filteredshoeList = searchedShoe
+        ? shoeList.filter((shoe) => {
               const brandName = `${shoe.brand}`;
               return brandName.toLowerCase().startsWith(searchedShoe.toLowerCase());
           })
-        : shoes;
+        : shoeList;
 
-    $: selected = filteredShoes[i];
+    $: selected = filteredshoeList[i];
 
     $: reset_inputs(selected);
 
     function create() {
-        shoes = shoes.concat({ brand, color, material });
-        i = shoes.length - 1;
+        shoeList = shoeList.concat({ brand, color, material });
+        i = shoeList.length - 1;
         brand = color = material = "";
     }
 
     function update() {
-        shoes[i] = { brand, color, material };
+        shoeList[i] = { brand, color, material };
     }
 
     function remove() {
-        shoes = [...shoes.slice(0, i), ...shoes.slice(i + 1)];
+        shoeList = [...shoeList.slice(0, i), ...shoeList.slice(i + 1)];
 
         brand = color = material = "";
     }
@@ -68,7 +92,7 @@
 	.buttons {
 		clear: both;
 	}  
-    
+
   .container {
     outline: 1px solid black;
     display: inline-flex;
@@ -78,15 +102,15 @@
 </style>
 
 <div class="container">
-        {#each shoes as shoe}
-          <Item on:click={() => clicked++}>
+        {#each shoeList as shoe}
+          <Item on:click={() => clickedItem}>
             <Text>{shoe.brand}, {shoe.color}, {shoe.material}</Text>
           </Item>
         {/each}
 </div>
 
 <select bind:value={i} size={5}>
-	{#each filteredShoes as shoe, i}
+	{#each filteredshoeList as shoe, i}
 		<option value={i}>{shoe.brand}, {shoe.color}, {shoe.material} </option>
 	{/each}
 </select>

@@ -36,8 +36,11 @@
   <p>These shoes are from {selectedItem.brand}, are {selectedItem.color}, and are made of {selectedItem.material}.</p>
 </Modal>
 
+<Crud></Crud>
+
 <script>
   import DataTable, {Head, Body, Row, Cell} from '@smui/data-table';
+  import Crud from "./Crud.svelte";
   import Modal from "./Modal.svelte";
   let modal;
 
