@@ -1,7 +1,7 @@
 <script>
-    import Card, {Content} from '@smui/card';
-    import Button, {Label} from '@smui/button';
-    import List, {Item, Text} from '@smui/list';
+    // import Card, {Content} from '@smui/card';
+    // import Button, {Label} from '@smui/button';
+    // import List, {Item, Text} from '@smui/list';
 
     let clicked = 0;
 
@@ -144,6 +144,8 @@
     }
 </script>
 
+<!-- No SMUI -->
+
 <div class="search buttons"></div>
 
 <input placeholder="Search by Brand" bind:value={searchedShoe}>
@@ -165,6 +167,7 @@
 	<button on:click={remove} disabled="{!selected}">Remove</button>
 </div> 
 
+
 <style>
     .card-container {
       display: inline-flex;
@@ -178,7 +181,9 @@
     }
 </style>
 
-<input placeholder="Search by Brand" bind:value={searchedShoe}>
+<!-- SMUI -->
+
+<!-- <input placeholder="Search by Brand" bind:value={searchedShoe}>
 
 <div class="card-container">
     <div>
@@ -211,4 +216,4 @@
 	<Button on:click={create} disabled="{!brand || !color || !size}">Add</Button>
 	<Button on:click={update} disabled="{!brand || !color || !size || !selected}">Update</Button>
 	<Button on:click={remove} disabled="{!selected}">Remove</Button>
-</div> 
+</div> -->
