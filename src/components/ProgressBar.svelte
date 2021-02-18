@@ -18,8 +18,8 @@
 </div>
 <script>
     export let percent;
-    let color = '#202020';
-    function barColor(){
+    let color = '(32,32,32)';
+    /*function barColor(){
         if(percent < 20){
             color = '#ef2020';
         }
@@ -30,5 +30,7 @@
             color = '#20ef20';
         }
     }
-    barColor();
+    barColor();*/
+    let r = 255 - ((color / 100) * 255);
+    let g = ((color / 100) * 255);
 </script>
