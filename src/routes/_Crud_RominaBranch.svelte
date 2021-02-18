@@ -187,7 +187,7 @@
     .drawer-container {
     position: relative;
     display: flex;
-    height: 350px;
+    height: 550px;
     border: 1px solid rgba(0,0,0,.1);
     overflow: hidden;
     z-index: 0;
