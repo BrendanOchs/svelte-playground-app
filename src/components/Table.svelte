@@ -4,6 +4,7 @@
   import Button, {Label} from "@smui/button";
   import DataTable, { Head, Body, Row, Cell } from "@smui/data-table";
   import ProgressBar from "./ProgressBar.svelte";
+  import Modal from "./Modal.svelte"
 
   let deals = [
     {
@@ -115,7 +116,7 @@
       </Head>
       <Body>
         {#each deals as item}
-          <Row ondblclick = {()=> modal.show()}>
+          <Row ondblclick = {()=> Modal.show()}>
               <Cell>{item.name}</Cell>
               <Cell><ProgressBar percent={item.percentDone}/></Cell>
           </Row>
