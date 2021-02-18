@@ -188,10 +188,16 @@
     position: relative;
     display: flex;
     height: 350px;
-    max-width: 600px;
     border: 1px solid rgba(0,0,0,.1);
     overflow: hidden;
     z-index: 0;
+  }
+
+  .main-content {
+    overflow: auto;
+    padding: 16px;
+    height: 100%;
+    box-sizing: border-box;
   }
 </style>
 
@@ -204,7 +210,7 @@
             <Card style="width: 320px;">
                 <Content component={List}>
                 {#each filteredShoes as shoe, i}
-                    <Item on:click={() => clicked++} value={i}>{shoe.brand}, {shoe.color}, {shoe.material}, {shoe.size}</Item>
+                    <Item value={i}>{shoe.brand}, {shoe.color}, {shoe.material}, {shoe.size}</Item>
                 {/each}
                 </Content>
             </Card>
@@ -233,21 +239,25 @@
     </div>
 </div>
 
+<!-- SMUI Drawer -->
 
 <div class="drawer-container">
     <Drawer>
       <Content>
-        <List>
+        <input placeholder="Search by Brand" bind:value={searchedShoe}>
+        <List bind:value={i}>
             {#each filteredShoes as shoe, i}
-                <Item on:click={() => clicked++} value={i}>{shoe.brand}, {shoe.color}, {shoe.material}, {shoe.size}</Item>
+                <Item value={i}>{shoe.brand}, {shoe.color}, {shoe.material}, {shoe.size}</Item>
             {/each}
         </List>
       </Content>
     </Drawer>
-
     <AppContent class="app-content">
-      <main class="main-content">
-        App content.
-      </main>
+        <main class="main-content">
+            <Textfield variant="filled" bind:value={brand} label="Brand"/>
+            <Textfield variant="filled" bind:value={color} label="Color"/>
+            <Textfield variant="filled" bind:value={material} label="Material"/>
+            <Textfield variant="filled" bind:value={size} label="Size"/>
+        </main>
     </AppContent>
 </div>
