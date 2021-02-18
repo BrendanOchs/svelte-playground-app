@@ -1,7 +1,11 @@
 <script>
-    import Card, {Content} from '@smui/card';
+     import Drawer, {AppContent, Content, Header, Title, Subtitle, Scrim} from '@smui/drawer';
+
+    import Card from '@smui/card';
     import Button, {Label} from '@smui/button';
     import List, {Item, Text} from '@smui/list';
+    import Textfield, {Input, Textarea} from '@smui/textfield';
+    import HelperText from '@smui/textfield/helper-text/index';
 
     let clicked = 0;
 
@@ -146,7 +150,7 @@
 
 <!-- No SMUI -->
 
-<div class="search buttons"></div>
+<!-- <div class="search buttons"></div>
 
 <input placeholder="Search by Brand" bind:value={searchedShoe}>
 
@@ -165,10 +169,10 @@
 	<button on:click={create} disabled="{!brand || !color || !size || !material}">Add</button>
 	<button on:click={update} disabled="{!brand || !color || !size || !material || !selected}">Update</button>
 	<button on:click={remove} disabled="{!selected}">Remove</button>
-</div> 
+</div>  -->
 
 
-<!-- <style>
+<style>
     .card-container {
       display: inline-flex;
       justify-content: center;
@@ -179,39 +183,71 @@
       margin-right: 20px;
       margin-bottom: 20px;
     }
-</style> -->
+
+    .drawer-container {
+    position: relative;
+    display: flex;
+    height: 350px;
+    max-width: 600px;
+    border: 1px solid rgba(0,0,0,.1);
+    overflow: hidden;
+    z-index: 0;
+  }
+</style>
 
 <!-- SMUI -->
-<div class="">
-<input placeholder="Search by Brand" bind:value={searchedShoe}>
+<div class="crud-blick">
+    <input placeholder="Search by Brand" bind:value={searchedShoe}>
 
-<div class="card-container">
-    <div>
-      <Card style="width: 320px;">
-        <Content component={List}>
-          {#each shoes as shoe}
-            <Item on:click={() => clicked++}>
-              <Text>{shoe.brand}, {shoe.color}, {shoe.material}, {shoe.size}</Text>
-            </Item>
-          {/each}
-        </Content>
-      </Card>
+    <div class="card-container">
+        <div>
+            <Card style="width: 320px;">
+                <Content component={List}>
+                {#each filteredShoes as shoe, i}
+                    <Item on:click={() => clicked++} value={i}>{shoe.brand}, {shoe.color}, {shoe.material}, {shoe.size}</Item>
+                {/each}
+                </Content>
+            </Card>
+        </div>
     </div>
-  </div>
 
-<select bind:value={i} size={5}>
-	{#each filteredShoes as shoe, i}
-		<option value={i}>{shoe.brand}, {shoe.color}</option>
-	{/each}
-</select>
+    <!-- <select bind:value={i} size={5}>
+        {#each filteredShoes as shoe, i}
+            <option value={i}>{shoe.brand}, {shoe.color}</option>
+        {/each}
+    </select> -->
 
-<label><input bind:value={brand} placeholder="brand"></label>
-<label><input bind:value={color} placeholder="color"></label>
-<label><input bind:value={size} placeholder="size"></label>
+    <Textfield variant="filled" bind:value={brand} label="Brand" input$aria-controls="helper-text-filled-a" input$aria-describedby="helper-text-filled-a"/>
+    <Textfield variant="filled" bind:value={color} label="color" input$aria-controls="helper-text-filled-a" input$aria-describedby="helper-text-filled-a"/>
+    <Textfield variant="filled" bind:value={material} label="material" input$aria-controls="helper-text-filled-a" input$aria-describedby="helper-text-filled-a"/>
+    <Textfield variant="filled" bind:value={size} label="size" input$aria-controls="helper-text-filled-a" input$aria-describedby="helper-text-filled-a"/>
 
-<div class='buttons'>
-	<Button on:click={create} disabled="{!brand || !color || !size}">Add</Button>
-	<Button on:click={update} disabled="{!brand || !color || !size || !selected}">Update</Button>
-	<Button on:click={remove} disabled="{!selected}">Remove</Button>
+    <!-- <label><input bind:value={brand} placeholder="brand"></label>
+    <label><input bind:value={color} placeholder="color"></label>
+    <label><input bind:value={size} placeholder="size"></label> -->
+
+    <div class='buttons'>
+        <Button on:click={create} disabled="{!brand || !color || !size}">Add</Button>
+        <Button on:click={update} disabled="{!brand || !color || !size || !selected}">Update</Button>
+        <Button on:click={remove} disabled="{!selected}">Remove</Button>
+    </div>
 </div>
+
+
+<div class="drawer-container">
+    <Drawer>
+      <Content>
+        <List>
+            {#each filteredShoes as shoe, i}
+                <Item on:click={() => clicked++} value={i}>{shoe.brand}, {shoe.color}, {shoe.material}, {shoe.size}</Item>
+            {/each}
+        </List>
+      </Content>
+    </Drawer>
+
+    <AppContent class="app-content">
+      <main class="main-content">
+        App content.
+      </main>
+    </AppContent>
 </div>
