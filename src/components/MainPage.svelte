@@ -2,6 +2,7 @@
     import ProgressBar from "../components/ProgressBar.svelte";
     import Crud from "../components/Crud.svelte";
     import Table from "./Table.svelte"
+    
 </script>
 <div class="flex-container">
     <div class="flex-item">1</div>
