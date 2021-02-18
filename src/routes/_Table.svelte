@@ -90,6 +90,11 @@
         selectedItem = shoe;
         simpleDialog.open();  // To only open the selected item on the table
     }
+
+    function selectedRow(shoe) {
+        selectedItem = shoe;
+        showDesc = !showDesc
+    }
 </script>
 
 <!-- <div class="flex-container table">
@@ -141,7 +146,7 @@
     </Head>
     <Body>
         {#each shoes as shoe}
-            <Row id="{shoe}" on:click="{() => showDesc = !showDesc}">
+            <Row id="{shoe}" on:click="{() => selectedRow(shoe)}" >
                 <Cell>{shoe.brand}</Cell>
                 <Cell>{shoe.color}</Cell>
                 <Cell>{shoe.material}</Cell>

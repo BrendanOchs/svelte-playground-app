@@ -7,8 +7,6 @@
     import Textfield, {Input, Textarea} from '@smui/textfield';
     import HelperText from '@smui/textfield/helper-text/index';
 
-    let clicked = 0;
-
     let shoes = [
         {
             brand: "Goodliffe",
@@ -146,6 +144,18 @@
         material = shoe ? shoe.material : "";
         size = shoe ? shoe.size : 0;
     }
+
+    // let clicked = {
+    //     brand: "";
+    //     color: "";
+    //     material: "";
+    //     size: 0
+    // };
+
+    // function selectedShoe(shoe) {
+    //     clicked = shoe;
+    // }
+
 </script>
 
 <!-- No SMUI -->
@@ -173,16 +183,6 @@
 
 
 <style>
-    .card-container {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 500px;
-      min-width: 380px;
-      background-color: #f8f8f8;
-      margin-right: 20px;
-      margin-bottom: 20px;
-    }
 
     .drawer-container {
     position: relative;
@@ -201,7 +201,7 @@
   }
 </style>
 
-<!-- SMUI -->
+<!-- SMUI
 <div class="crud-blick">
     <input placeholder="Search by Brand" bind:value={searchedShoe}>
 
@@ -217,20 +217,10 @@
         </div>
     </div>
 
-    <!-- <select bind:value={i} size={5}>
-        {#each filteredShoes as shoe, i}
-            <option value={i}>{shoe.brand}, {shoe.color}</option>
-        {/each}
-    </select> -->
-
     <Textfield variant="filled" bind:value={brand} label="Brand" input$aria-controls="helper-text-filled-a" input$aria-describedby="helper-text-filled-a"/>
     <Textfield variant="filled" bind:value={color} label="color" input$aria-controls="helper-text-filled-a" input$aria-describedby="helper-text-filled-a"/>
     <Textfield variant="filled" bind:value={material} label="material" input$aria-controls="helper-text-filled-a" input$aria-describedby="helper-text-filled-a"/>
     <Textfield variant="filled" bind:value={size} label="size" input$aria-controls="helper-text-filled-a" input$aria-describedby="helper-text-filled-a"/>
-
-    <!-- <label><input bind:value={brand} placeholder="brand"></label>
-    <label><input bind:value={color} placeholder="color"></label>
-    <label><input bind:value={size} placeholder="size"></label> -->
 
     <div class='buttons'>
         <Button on:click={create} disabled="{!brand || !color || !size}">Add</Button>
@@ -238,16 +228,15 @@
         <Button on:click={remove} disabled="{!selected}">Remove</Button>
     </div>
 </div>
-
-<!-- SMUI Drawer -->
+SMUI Drawer -->
 
 <div class="drawer-container">
     <Drawer>
       <Content>
         <input placeholder="Search by Brand" bind:value={searchedShoe}>
-        <List bind:value={i}>
-            {#each filteredShoes as shoe, i}
-                <Item value={i}>{shoe.brand}, {shoe.color}, {shoe.material}, {shoe.size}</Item>
+        <List>
+            {#each filteredShoes as shoe, index}
+                <Item on:SMUI:action={() => i = index}>{shoe.brand}, {shoe.color}, {shoe.material}, {shoe.size}</Item>
             {/each}
         </List>
       </Content>
@@ -258,6 +247,11 @@
             <Textfield variant="filled" bind:value={color} label="Color"/>
             <Textfield variant="filled" bind:value={material} label="Material"/>
             <Textfield variant="filled" bind:value={size} label="Size"/>
+            <div class='buttons'>
+                <Button on:click={create} disabled="{!brand || !color || !material || !size}">Add</Button>
+                <Button on:click={update} disabled="{!brand || !color || !material || !size || !selected}">Update</Button>
+                <Button on:click={remove} disabled="{!selected}">Remove</Button>
+            </div>
         </main>
     </AppContent>
 </div>
