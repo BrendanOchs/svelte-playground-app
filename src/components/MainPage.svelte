@@ -36,11 +36,33 @@
   <p>These shoes are from {selectedItem.brand}, are {selectedItem.color}, and are made of {selectedItem.material}.</p>
 </Modal>
 
-<Crud></Crud>
+<section>
+  <Textfield bind:value={searchedShoe} label="Filter"></Textfield>
+
+  <List bind:value={i} size={5}>
+    {#each filteredshoes as shoe, i}
+    <Item on:SMUI:action={() => searchedShoe = shoe} selected = {searchedShoe === shoe}>
+      <Text value={i}>{shoe.brand}, {shoe.color}, {shoe.material} </Text>
+    </Item>
+    {/each}
+  </List>
+  
+  <Textfield bind:value={brand} label="Brand"></Textfield>
+  <Textfield bind:value={color} label="Color"></Textfield>
+  <Textfield bind:value={material} label="Material"></Textfield>
+  
+  <div class='buttons'>
+    <Button on:click={create} disabled="{!brand || !color || !material}"><Label>Create</Label></Button>
+    <Button on:click={update} disabled="{!brand || !color || !material || !selected}"><Label>Update</Label></Button>
+    <Button on:click={remove} disabled="{!selected}"><Label>Delete</Label></Button>
+  </div>
+</section>
 
 <script>
   import DataTable, {Head, Body, Row, Cell} from '@smui/data-table';
-  import Crud from "./Crud.svelte";
+  import Button, {Label} from '@smui/button';
+  import Textfield from '@smui/textfield';
+  import List, {Item, Text} from '@smui/list';
   import Modal from "./Modal.svelte";
   let modal;
 
@@ -53,6 +75,45 @@
   function selectedShoe(shoe) {
     selectedItem = shoe;
     modal.show();
+  }
+
+  let searchedShoe = "";
+  let brand = "";
+  let color = "";
+  let material = "";
+ 
+  let i = 0;
+ 
+  $: filteredshoes = searchedShoe
+    ? shoes.filter((shoe) => {
+          const brandName = `${shoe.brand}`;
+          return brandName.toLowerCase().startsWith(searchedShoe.toLowerCase());
+      })
+    : shoes;
+ 
+  $: selected = filteredshoes[i];
+ 
+  $: reset_inputs(selected);
+ 
+  function create() {
+    shoes = shoes.concat({ brand, color, material });
+    i = shoes.length - 1;
+    brand = color = material = "";
+  }
+ 
+  function update() {
+    shoes[i] = { brand, color, material };
+  }
+ 
+  function remove() {
+    shoes = [...shoes.slice(0, i), ...shoes.slice(i + 1)];
+    brand = color = material = "";
+  }
+ 
+  function reset_inputs(shoe) {
+    brand = shoe ? shoe.brand : "";
+    color = shoe ? shoe.color : "";
+    material = shoe ? shoe.material : "";
   }
 
   let shoes = [{
