@@ -1,4 +1,7 @@
 <script>
+  import Textfield from "@smui/textfield";
+  import List, {Item, Text} from "@smui/list";
+  import Button, {Label} from "@smui/button";
   import DataTable, { Head, Body, Row, Cell } from "@smui/data-table";
   import ProgressBar from "./ProgressBar.svelte";
 
@@ -62,6 +65,10 @@
 		name = deals ? deals.name : '';
 		percentDone = deals ? deals.percentDone : '';
 	}
+
+  function detailView(){
+    console.log("working")
+  }
 </script>
 
 <style>
@@ -86,17 +93,16 @@
 	}
 </style>
 
-<input placeholder="filter prefix" bind:value={prefix}>
+<Textfield placeholder="filter prefix" bind:value={prefix}/>
 
-<label><input bind:value={name} placeholder="name"></label>
-<label><input bind:value={percentDone} placeholder="percentDone"></label>
+<Textfield bind:value={name} placeholder="name"/>
+<Textfield bind:value={percentDone} placeholder="percentDone"/>
 
 <div class='buttons'>
-	<button on:click={create} disabled="{!name || !percentDone}">create</button>
-	<button on:click={update} disabled="{!name || !percentDone || !selected}">update</button>
-	<button on:click={remove} disabled="{!selected}">delete</button>
+	<Button on:click={create} disabled="{!name || !percentDone}">create</Button>
+	<Button on:click={update} disabled="{!name || !percentDone || !selected}">update</Button>
+	<Button on:click={remove} disabled="{!selected}">delete</Button>
 </div>
-
 <body>
   <div class="flex-container">
     <DataTable table$aria-label="ObjectTable">
