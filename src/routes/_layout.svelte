@@ -10,3 +10,4 @@ import Table from "../components/Table.svelte";
 <main>
 	<slot> </slot>
 </main>
+<Table/>
