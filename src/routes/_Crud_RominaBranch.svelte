@@ -5,7 +5,7 @@
     import Button, {Label} from '@smui/button';
     import List, {Item, Text} from '@smui/list';
     import Textfield, {Input, Textarea} from '@smui/textfield';
-    import HelperText from '@smui/textfield/helper-text/index';
+    import Icon from '@smui/textfield/icon/index';
 
     let shoes = [
         {
@@ -145,16 +145,10 @@
         size = shoe ? shoe.size : 0;
     }
 
-    // let clicked = {
-    //     brand: "";
-    //     color: "";
-    //     material: "";
-    //     size: 0
-    // };
+    // Toggle Drawer Code
 
-    // function selectedShoe(shoe) {
-    //     clicked = shoe;
-    // }
+    let myDrawer;
+    let myDrawerOpen = false;
 
 </script>
 
@@ -193,12 +187,31 @@
     z-index: 0;
   }
 
+  .drawer-container.small-screen {
+      display: none;
+  }
+
+  .search {
+      margin: 5px;
+  }
+
   .main-content {
     overflow: auto;
     padding: 16px;
     height: 100%;
     box-sizing: border-box;
   }
+
+  @media only screen and (max-width: 600px) {
+    .drawer-container.small-screen {
+        display: flex;
+    }
+
+    .drawer-container.large-screen {
+        display: none;
+    }
+  }
+
 </style>
 
 <!-- SMUI
@@ -230,16 +243,20 @@
 </div>
 SMUI Drawer -->
 
-<div class="drawer-container">
+<div class="drawer-container large-screen">
     <Drawer>
-      <Content>
-        <input placeholder="Search by Brand" bind:value={searchedShoe}>
-        <List>
-            {#each filteredShoes as shoe, index}
-                <Item on:SMUI:action={() => i = index}>{shoe.brand}, {shoe.color}, {shoe.material}, {shoe.size}</Item>
-            {/each}
-        </List>
-      </Content>
+        <Content>
+            <div class="search">
+                <Textfield withLeadingIcon bind:value={searchedShoe} label="Leading Icon">
+                    <Icon class="material-icons">search</Icon>
+                </Textfield>
+            </div>
+            <List>
+                {#each filteredShoes as shoe, index}
+                    <Item on:SMUI:action={() => i = index}>{shoe.brand}, {shoe.color}, {shoe.material}, {shoe.size}</Item>
+                {/each}
+            </List>
+        </Content>
     </Drawer>
     <AppContent class="app-content">
         <main class="main-content">
@@ -255,3 +272,34 @@ SMUI Drawer -->
         </main>
     </AppContent>
 </div>
+
+
+
+<div class="drawer-container small-screen">
+    <Drawer variant="dismissible" bind:this={myDrawer} bind:open={myDrawerOpen}>
+        <Content>
+          <input placeholder="Search by Brand" bind:value={searchedShoe}>
+          <List>
+              {#each filteredShoes as shoe, index}
+                  <Item on:SMUI:action={() => i = index}>{shoe.brand}, {shoe.color}, {shoe.material}, {shoe.size}</Item>
+              {/each}
+          </List>
+        </Content>
+      </Drawer>
+      <AppContent class="app-content">
+          <main class="main-content">
+            <div class="search-button">
+                <Button on:click={() => myDrawerOpen = !myDrawerOpen}>Search</Button>
+            </div>
+            <Textfield variant="filled" bind:value={brand} label="Brand"/>
+            <Textfield variant="filled" bind:value={color} label="Color"/>
+            <Textfield variant="filled" bind:value={material} label="Material"/>
+            <Textfield variant="filled" bind:value={size} label="Size"/>
+            <div class='buttons'>
+                <Button on:click={create} disabled="{!brand || !color || !material || !size}">Add</Button>
+                <Button on:click={update} disabled="{!brand || !color || !material || !size || !selected}">Update</Button>
+                <Button on:click={remove} disabled="{!selected}">Remove</Button>
+            </div>
+          </main>
+      </AppContent>
+  </div>

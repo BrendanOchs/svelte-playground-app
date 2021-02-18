@@ -1,21 +1,79 @@
 .flex-container {
   display: flex;
-  flex-flow: row wrap;
+  /* flex-flow: row wrap; */
   justify-content: space-around;
+  align-items: stretch;
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
+.flex-container {
+  flex-direction: row;
+}
+
 .flex-item {
-  background: tomato;
+  background-color: white;
+  border: 2px dashed grey;
   padding: 5px;
+  /* width: auto; */
   /* width: 200px; */
-  height: 150px;
-  margin-top: 10px;
+  margin: 5px;
   line-height: 150px;
-  color: white;
+  color: black;
   font-weight: bold;
   font-size: 3em;
   text-align: center;
+}
+
+.flex-item.center{
+  /* align-self: flex-start; */
+  flex-grow: 2;
+  /* min-width: 800px; */
+}
+
+.flex-item.left, .flex-item.right {
+  /* flex-shrink: 1; */
+  min-width: 350px;
+}
+
+
+/* Tablet Media Quiry */
+
+@media only screen and (max-width: 1300px) {
+  .flex-container {
+    flex-direction: column;
+  }
+
+  .flex-item.center {
+    flex-grow: 0;
+    order: 1;
+    /* width: 95%; */
+  }
+
+  .flex-item.left, .flex-item.right {
+    min-width: auto;
+    order: 2;
+    /* width: 50%; */
+  }
+}  
+
+/* Mobile Media Quiry */
+
+@media only screen and (max-width: 600px) {
+  .flex-container {
+    flex-direction: column;
+  }
+
+  .flex-item.center {
+    flex-grow: 0;
+    order: 1;
+    /* width: 95%; */
+  }
+
+  .flex-item.left, .flex-item.right {
+    min-width: auto;
+    order: 2;
+    /* width: auto; */
+  }
 }
