@@ -115,7 +115,7 @@
       </Head>
       <Body>
         {#each deals as item}
-          <Row>
+          <Row ondblclick = {()=> modal.show()}>
               <Cell>{item.name}</Cell>
               <Cell><ProgressBar percent={item.percentDone}/></Cell>
           </Row>
