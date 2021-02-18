@@ -29,47 +29,46 @@
     },
   ];
 
-	let prefix = '';
-	let name = '';
-	let percentDone = 0;
+	let progression = '';
+	let dealName = '';
+	let dealCompletion = '';
 	let i = 0;
 
-	$: filteredDeals = prefix
-		? deals.filter(deals => {
-			const name = `${deals.name}, ${deals.percentDone}`;
-			return name.toLowerCase().startsWith(prefix.toLowerCase());
-		})
-		: deals;
+  $: filteredAllDeals = progression
+	? allDeals.filter(deal => {
+		const name = `${deal.dealCompletion}, ${deal.dealName}`;
+		return name.toLowerCase().startsWith(progression.toLowerCase());
+	})
+	: allDeals;
 
-	$: selected = filteredDeals[i];
+	$: selected = filteredAllDeals[i];
 
 	$: reset_inputs(selected);
-
 	function create() {
-		deals = deals.concat({ name, percentDone });
-		i = deals.length - 1;
-		name = percentDone = '';
+		allDeals = allDeals.concat({ dealName, dealCompletion });
+		i = allDeals.length - 1;
+		dealName = dealCompletion = '';
 	}
 
 	function update() {
-		deals[i] = { name, percentDone };
+		selected.dealName = dealName;
+		selected.dealCompletion = dealCompletion;
+		allDeals = allDeals;
 	}
 
 	function remove() {
-		deals = [...deals.slice(0, i), ...deals.slice(i + 1)];
+		const index = allDeals.indexOf(selected);
+		allDeals = [...allDeals.slice(0, index), ...allDeals.slice(index + 1)];
 
-		name = percentDone = '';
-		i = Math.min(i, deals.length - 1);
+		dealName = dealCompletion = '';
+		i = Math.min(i, filteredAllDeals.length - 2);
 	}
 
-	function reset_inputs(deals) {
-		name = deals ? deals.name : '';
-		percentDone = deals ? deals.percentDone : '';
+	function reset_inputs(deal) {
+		dealName = deal ? deal.dealName : '';
+		dealCompletion = deal ? deal.dealCompletion : '';
 	}
 
-  function detailView(){
-    console.log("working")
-  }
   function bColor(xpercent)
   {
     let r, g, b = 32;
@@ -134,24 +133,16 @@
         </Row>
       </Head>
       <Body>
-<<<<<<< HEAD
         {#each allDeals as item}
           <Row>
               <Cell>{item.dealName}</Cell>
               <Cell><ProgressBar percent={item.dealCompletion} color={bColor(item.dealCompletion)}/></Cell>
               
-=======
-        {#each deals as item}
-          <Row ondblclick = {()=> Modal.show()}>
-              <Cell>{item.name}</Cell>
-              <Cell><ProgressBar percent={item.percentDone}/></Cell>
->>>>>>> crud_alex
           </Row>
         {/each}
       </Body>
     </DataTable>
   </div>
-<<<<<<< HEAD
   <input placeholder="filter progression" bind:value={progression}>
 
   <select bind:value={i} size={5}>
@@ -170,8 +161,3 @@
   </div>
 </body>
 
-<style>
-</style>
-=======
-</body>
->>>>>>> crud_alex
