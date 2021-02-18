@@ -1,3 +1,9 @@
+<script>
+    export let percent;
+    export let color;
+
+    
+</script>
 <style>
     #buffer{
         width: 100%;
@@ -16,21 +22,3 @@
         
     </div>
 </div>
-<script>
-    export let percent;
-    let color = '(32,32,32)';
-    /*function barColor(){
-        if(percent < 20){
-            color = '#ef2020';
-        }
-        else if(percent < 60){
-            color = '#dfef20';
-        }
-        else{
-            color = '#20ef20';
-        }
-    }
-    barColor();*/
-    let r = 255 - ((color / 100) * 255);
-    let g = ((color / 100) * 255);
-</script>

@@ -64,6 +64,26 @@
 		dealName = deal ? deal.dealName : '';
 		dealCompletion = deal ? deal.dealCompletion : '';
 	}
+
+  function bColor(xpercent)
+  {
+    let r, g, b = 32;
+    if (xpercent < 50){
+        g = ((xpercent / 100) * 255);
+        r = 255;
+    }
+    if (xpercent > 50){
+        r = 255 - ((xpercent / 100) * 255);
+        g = 255 - ((xpercent / 100) * 112);
+
+    }
+    if (xpercent == 50)
+    {
+        g = 255;
+        r = 255;
+    }
+    return `rgb(${r}, ${g}, ${b})`;
+  }
 </script>
 
 <body>
@@ -80,7 +100,8 @@
         {#each allDeals as item}
           <Row>
               <Cell>{item.dealName}</Cell>
-              <Cell><ProgressBar percent={item.dealCompletion}/></Cell>
+              <Cell><ProgressBar percent={item.dealCompletion} color={bColor(item.dealCompletion)}/></Cell>
+              
           </Row>
         {/each}
       </Body>
