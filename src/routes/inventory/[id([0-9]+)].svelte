@@ -10,7 +10,12 @@
     }
 </script>
 
+<script>
+    import IconButton from '@smui/icon-button';
+</script>
+
 <style>
+    @import "@material/typography/mdc-typography";
     button {
         font-size: 30px;
     }
@@ -25,18 +30,24 @@
     .text-left {
         text-align: left;
     }
+    iframe {
+        width: 100%;
+        height: 600px;
+    }
 </style>
 
-<a href="inventory"><button>←</button></a>
+<a href="inventory"><IconButton class="material-icons">west</IconButton></a>
 <h1>
 {#await promise}
     <h4 class="text-center">Loading...</h4>
 {:then movie}
     <div class="text-center">
-        <h3><i>{movie.name}</i></h3>
-        <h6 class="norm-fw">{movie.genre}</h6>
-        <h4 class="norm-fw">"{movie.slogan}"</h4>
-        <h6 class="spacing norm-fw text-left">{movie.desc}</h6>
+        <iframe src={movie.trailer} title="Movie Trailer"/>
+        <h3 class="mdc-typography--headline3"><i>{movie.name}</i></h3>
+        <h6 class="norm-fw mdc-typography--subtitle1">{movie.genre}</h6>
+        <p class="norm-fw mdc-typography--subtitle2">Rating: {movie.rating} / 5 Stars</p>
+        <h6 class="norm-fw mdc-typography--headline6">Famous Quote: "{movie.slogan}"</h6>
+        <h6 class="norm-fw spacing mdc-typography--headline6 text-left">{movie.desc}</h6>
     </div>
 {/await}
 </h1>

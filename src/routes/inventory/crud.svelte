@@ -32,11 +32,11 @@
         }
         movs = [...movs,
             {
-                name: name,
-                genre: genre,
-                desc: desc,
-                slogan: slogan,
-                id: id
+                name,
+                genre,
+                desc,
+                slogan,
+                id
             }
         ]
         selectedMovie = movs[movs.length - 1];
@@ -50,10 +50,10 @@
             }
         })
         movs[i] = {
-            name: name,
-            genre: genre,
-            desc: desc,
-            slogan: slogan,
+            name,
+            genre,
+            desc,
+            slogan,
             id: i
         }
         selectedMovie = movs[i]
@@ -67,7 +67,7 @@
             }
         })
         movs = [...movs.slice(0, i), ...movs.slice(i+1)];
-        selectedMovie = movs[i-1]
+        selectedMovie = movs[i-1];
     }
 </script>
 
@@ -107,8 +107,8 @@
         <div class="mt-20">
             <Textfield textarea fullwidth bind:value={desc} label="Description" />
         </div>
-        <Button on:click={() => create()}><Label>Create</Label></Button>
-        <Button on:click={() => update()}><Label>Update</Label></Button>
-        <Button on:click={() => remove()}><Label>Delete</Label></Button>
+        <Button on:click={() => create()}>Create</Button>
+        <Button on:click={() => update()}>Update</Button>
+        <Button on:click={() => remove()}>Delete</Button>
     </div>
 </div>
