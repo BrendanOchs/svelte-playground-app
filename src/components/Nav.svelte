@@ -12,16 +12,42 @@
 			<Row>
 				<Section>
 					<IconButton class="material-icons">menu</IconButton>
-					<Title>Static</Title>
+					<Title>Final Offer</Title>
 				</Section>
 				<Section align="end" toolbar>
-					<Button aria-current="{segment === undefined ? 'page' : undefined}" href=".">
+					<Button
+						aria-current={segment === undefined ? 'page' : undefined}
+						href=".">
 						<Label>Home</Label>
 					</Button>
-					<Button aria-current="{segment === 'about' ? 'page' : undefined}" href="about">
-						<Label>About</Label>
+					<Button
+						aria-current={segment === 'about' ? 'page' : undefined}
+						href="about">
+						<Label>What we do</Label>
 					</Button>
-					<Button aria-current="{segment === 'blog' ? 'page' : undefined}" href="blog">
+					<Button
+						aria-current={segment === 'why' ? 'page' : undefined}
+						href="why">
+						<Label>Why Final Offer</Label>
+					</Button>
+					<Button
+						aria-current={segment === 'profile' ? 'page' : undefined}
+						href="profile">
+						<Label>Profile</Label>
+					</Button>
+					<Button
+						aria-current={segment === 'offer' ? 'page' : undefined}
+						href="offer">
+						<Label>Offer</Label>
+					</Button>
+					<Button
+						aria-current={segment === 'faq' ? 'page' : undefined}
+						href="faq">
+						<Label>FAQ</Label>
+					</Button>
+					<Button
+						aria-current={segment === 'blog' ? 'page' : undefined}
+						href="blog">
 						<Label>Blog</Label>
 					</Button>
 				</Section>
