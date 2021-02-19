@@ -21,6 +21,7 @@
         reason: "edit"
     };
     export function open() {
+        console.log(data.movie)
         dialog.open()
     }
     function emit(reason) {
@@ -48,7 +49,7 @@
             <div class="split">
                 <span class="m-10"><Textfield bind:value={data.movie.name} label="Name" /></span>
                 <span class="m-10"><Textfield bind:value={data.movie.genre} label="Genre" /></span>
-                <span class="m-10"><Textfield bind:value={data.movie.slogan} label="Slogan" /></span>
+                <span class="m-10"><Textfield bind:value={data.movie.slogan} label="Famous Quote" /></span>
                 <span class="m-10"><Textfield type="url" bind:value={data.movie.trailer} label="Link" /></span>
                 <span class="m-10"><Textfield style="width: 100%" type="number" bind:value={data.movie.rating} label="Rating (Out of 5 Stars)" input$step="0.1" input$min="0" input$max="5"/></span>
             </div>

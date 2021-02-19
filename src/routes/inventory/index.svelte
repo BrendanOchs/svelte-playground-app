@@ -29,7 +29,19 @@
             data.actions = ["Cancel", "Create"];
             data.title = "Create Movie";
         }
-        data.movie = movie;
+        if (movie) {
+            data.movie = movie;
+        }
+        else {
+            data.movie = {
+                name: "Name",
+                genre: "Genre",
+                desc: "Description",
+                slogan: "Quote",
+                trailer: "https://www.youtube.com/embed/qvsgGtivCgs",
+                rating: 0
+            }
+        }
         data.reason = reason;
         dialogData = data;
         dialog.open();
@@ -98,7 +110,7 @@
 
 <div class="m-10">
     <Textfield bind:value={filter} label="Filter" />
-    <div style="float: right" class="m-10"><Button on:click={() => dialogOpen(movies[0],"create")}>Create<span class="pl-5"><Icon class="material-icons">add</Icon></span></Button></div>
+    <div style="float: right" class="m-10"><Button on:click={() => dialogOpen(null, "create")}>Create<span class="pl-5"><Icon class="material-icons">add</Icon></span></Button></div>
 </div>
 
 <div class="flex-container">
