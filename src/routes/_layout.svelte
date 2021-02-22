@@ -1,4 +1,6 @@
 <script>
+import Crud from "../components/Crud.svelte";
+
 	import Nav from "../components/Nav.svelte";
 	import Reels from "../components/Reels.svelte";
 import Table from "../components/Table.svelte";
@@ -10,4 +12,4 @@ import Table from "../components/Table.svelte";
 <main>
 	<slot> </slot>
 </main>
-<Table/>
+<Crud/>
