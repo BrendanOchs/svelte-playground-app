@@ -208,9 +208,7 @@
 
 
 <style>
-
-
-
+    
     .drawer-container {
     position: relative;
     display: flex;
@@ -351,12 +349,21 @@ SMUI Drawer -->
     </AppContent>
 </div>
 
-
+<!-- Drawer for Mobile Screens (toggle) -->
 
 <div class="drawer-container small-screen">
     <Drawer variant="dismissible" bind:this={myDrawer} bind:open={myDrawerOpen}>
         <Content>
-          <input placeholder="Search by Brand" bind:value={searchedShoe}>
+            <div class="search">
+                <Textfield withLeadingIcon bind:value={searchedShoe} label="Search by {choice}">
+                    <Icon class="material-icons">search</Icon>
+                </Textfield>
+            </div>
+            <div>
+                <Set chips={['Brand', 'Color', 'Material', 'Size']} let:chip choice bind:selected={choice}>
+                    <Chip>{chip}</Chip>
+                </Set>
+              </div>
           <List>
               {#each filteredShoes as shoe, index}
                   <Item on:SMUI:action={() => i = index}>{shoe.brand}, {shoe.color}, {shoe.material}, {shoe.size}</Item>
