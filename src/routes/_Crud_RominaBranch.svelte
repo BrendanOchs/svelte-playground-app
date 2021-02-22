@@ -299,7 +299,6 @@ SMUI Drawer -->
 
 <Dialog bind:this={simpleDialog} aria-labelledby="simple-title" aria-describedby="simple-content">
     <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
-    <Title id="simple-title">Title</Title>
     {#if selectedItem}
         <Content id="simple-content">
             These are shoes from {selectedItem.brand}, they are {selectedItem.color}, made of {selectedItem.material}, avalible in sizes {selectedItem.size}.
@@ -344,7 +343,6 @@ SMUI Drawer -->
                 <Button on:click={update} disabled="{!brand || !color || !material || !size || !selected}">Update</Button>
                 <Button on:click={remove} disabled="{!selected}">Remove</Button>
             </div>
-            <pre class="status">Selected: {choice}</pre>
         </main>
     </AppContent>
 </div>
