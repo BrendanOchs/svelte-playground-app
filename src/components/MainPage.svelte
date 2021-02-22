@@ -11,48 +11,21 @@
 </script>
 
 <style>
-    .container {
-        display: flex;
-    }
-
-    .column,
-    .column-center {
-        border: 1px solid gray;
-    }
-
-    .column {
-        width: 250px;
-    }
-
-    .column-center {
-        flex-grow: 1; /* Set the middle element to grow and stretch */
-        margin: 10px;
-    }
-    @media only screen and (max-width: 900px) {
-        .container {
-            display: block;
-        }
-        .column,
-        .column-center {
-            width: 100%;
-            display: block;
-        }
-    }
 </style>
 
-<div class="container">
-    <div class="column">
+<div class="flex-container">
+    <div class="flex-item left">
         <Search {segment} />
         <Reel {segment} />
         <Facts {segment} />
         <Counter {segment} />
     </div>
-    <div class="column-center">
+    <div class="flex-item center">
         <Steps {segment} />
         <Cta {segment} />
         <Pos {segment} />
     </div>
-    <div class="column">
+    <div class="flex-item right">
         <OfferCompletion {segment} />
     </div>
 </div>
