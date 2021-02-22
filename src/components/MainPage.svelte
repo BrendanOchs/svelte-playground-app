@@ -28,6 +28,16 @@
         flex-grow: 1; /* Set the middle element to grow and stretch */
         margin: 10px;
     }
+    @media only screen and (max-width: 900px) {
+        .container {
+            display: block;
+        }
+        .column,
+        .column-center {
+            width: 100%;
+            display: block;
+        }
+    }
 </style>
 
 <div class="container">
