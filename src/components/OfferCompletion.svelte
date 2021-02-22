@@ -1,12 +1,12 @@
 <script>
     export let segment;
+    import Table from "../components/Table.svelte";
 </script>
 
 <style>
-    div {
-        border: 1px solid gray;
-        border-radius: 2px;
-    }
 </style>
 
-<div>Offer Completion Component</div>
+<div>
+    <h3>Offer Completion Component</h3>
+    <Table {segment} />
+</div>
