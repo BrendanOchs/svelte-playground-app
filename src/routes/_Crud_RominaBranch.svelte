@@ -1,11 +1,15 @@
 <script>
      import Drawer, {AppContent, Content, Header, Title, Subtitle, Scrim} from '@smui/drawer';
+     import Chip, {Set} from '@smui/chips';
 
-    import Card from '@smui/card';
+    // import Card from '@smui/card';
     import Button, {Label} from '@smui/button';
     import List, {Item, Text} from '@smui/list';
     import Textfield, {Input, Textarea} from '@smui/textfield';
     import Icon from '@smui/textfield/icon/index';
+
+    import Dialog from '@smui/dialog';
+    import DataTable, {Head, Body, Row, Cell } from "@smui/data-table";
 
     let shoes = [
         {
@@ -100,6 +104,13 @@
         },
     ];
 
+    let choice = "Brand";
+
+    // let searchByBrand = true;
+    // let searchByColor = false;
+    // let searchByMaterial = false;
+    // let searchBySize = false;
+
     let searchedShoe = "";
     let brand = "";
     let color = "";
@@ -110,8 +121,19 @@
 
     $: filteredShoes = searchedShoe
         ? shoes.filter((shoe) => {
-              const brandName = `${shoe.brand}`;
-              return brandName.toLowerCase().startsWith(searchedShoe.toLowerCase());
+              if (choice == "Brand") {
+                const brandName = `${shoe.brand}`;
+                return brandName.toLowerCase().startsWith(searchedShoe.toLowerCase());
+              } else if (choice == "Color") {
+                const colorName = `${shoe.color}`;
+                return colorName.toLowerCase().startsWith(searchedShoe.toLowerCase());
+              } else if (choice == "Material") {
+                  const materialName = `${shoe.material}`;
+                  return materialName.toLowerCase().startsWith(searchedShoe.toLowerCase());
+              } else {
+                  const sizeNumber = `${shoe.size}`;
+                  return sizeNumber.startsWith(searchedShoe);
+              }
           })
         : shoes;
 
@@ -150,6 +172,15 @@
     let myDrawer;
     let myDrawerOpen = false;
 
+    let simpleDialog;
+
+    let selectedItem;
+
+    function selectedRow(shoe) {
+        selectedItem = shoe;
+        simpleDialog.open();  // To only open the selected item on the table
+    }
+
 </script>
 
 <!-- No SMUI -->
@@ -177,6 +208,8 @@
 
 
 <style>
+
+
 
     .drawer-container {
     position: relative;
@@ -243,14 +276,58 @@
 </div>
 SMUI Drawer -->
 
+<DataTable table$aria-label="Shoes">
+    <Head>
+        <Row class="row-class">
+            <Cell>Brand</Cell>
+            <Cell>Color</Cell>
+            <Cell>Material</Cell>
+            <Cell>Size</Cell>
+        </Row>
+    </Head>
+    <Body>
+        {#each shoes as shoe}
+            <Row id="{shoe}" on:click={() => selectedRow(shoe)}>
+                <Cell>{shoe.brand}</Cell>
+                <Cell>{shoe.color}</Cell>
+                <Cell>{shoe.material}</Cell>
+                <Cell>{shoe.size}</Cell>
+            </Row>
+            <!-- <p on:click={() => selectedShoe(shoe)} class:showDesc={showDesc}>
+            These are shoes from {shoe.brand}, they are {shoe.color}, made of {shoe.material}, avalible in sizes {shoe.size}</p> -->
+        {/each}
+    </Body>
+</DataTable>
+
+<Dialog bind:this={simpleDialog} aria-labelledby="simple-title" aria-describedby="simple-content">
+    <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
+    <Title id="simple-title">Title</Title>
+    {#if selectedItem}
+        <Content id="simple-content">
+            These are shoes from {selectedItem.brand}, they are {selectedItem.color}, made of {selectedItem.material}, avalible in sizes {selectedItem.size}.
+        </Content>
+    {:else}
+        <Content id="simple-content">
+            The item you're looking for does not exist/SOld out  
+        </Content>
+    {/if}
+</Dialog>
+
+<!-- Drawer for Desktop (non-toggle) -->
+
 <div class="drawer-container large-screen">
     <Drawer>
         <Content>
             <div class="search">
-                <Textfield withLeadingIcon bind:value={searchedShoe} label="Leading Icon">
+                <Textfield withLeadingIcon bind:value={searchedShoe} label="Search by {choice}">
                     <Icon class="material-icons">search</Icon>
                 </Textfield>
             </div>
+            <div>
+                <Set chips={['Brand', 'Color', 'Material', 'Size']} let:chip choice bind:selected={choice}>
+                    <Chip>{chip}</Chip>
+                </Set>
+              </div>
             <List>
                 {#each filteredShoes as shoe, index}
                     <Item on:SMUI:action={() => i = index}>{shoe.brand}, {shoe.color}, {shoe.material}, {shoe.size}</Item>
@@ -269,6 +346,7 @@ SMUI Drawer -->
                 <Button on:click={update} disabled="{!brand || !color || !material || !size || !selected}">Update</Button>
                 <Button on:click={remove} disabled="{!selected}">Remove</Button>
             </div>
+            <pre class="status">Selected: {choice}</pre>
         </main>
     </AppContent>
 </div>

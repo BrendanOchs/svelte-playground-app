@@ -12,6 +12,5 @@
 	<slot />
 </main>
 
-<Table/>
 <Crud/>
 

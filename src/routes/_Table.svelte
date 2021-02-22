@@ -146,7 +146,7 @@
     </Head>
     <Body>
         {#each shoes as shoe}
-            <Row id="{shoe}" on:click="{() => selectedRow(shoe)}" >
+            <Row id="{shoe}" on:click={() => selectedRow(shoe)}>
                 <Cell>{shoe.brand}</Cell>
                 <Cell>{shoe.color}</Cell>
                 <Cell>{shoe.material}</Cell>
