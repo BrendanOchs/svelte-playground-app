@@ -30,7 +30,6 @@ export async function put(req, res) {
 	let { id } = req.params;
 	let replacement = req.body;
 	let number = id++;
-	console.log(replacement);
 	if (lookup.has(number)) {
 		lookup.delete(number);
 		lookup.set(number, JSON.stringify(replacement));
@@ -38,6 +37,40 @@ export async function put(req, res) {
 			'Content-Type': 'application/json'
 		});
 		res.end(JSON.stringify(replacement));
+	}
+	else {
+		res.writeHead(404, {
+			'Content-Type': 'application/json'
+		});
+
+		res.end(JSON.stringify({
+			message: `Not found`
+		}));
+	}
+}
+
+export async function post(req, res) {
+	let { id } = req.params;
+	let replacement = req.body;
+	let number = id++;
+	lookup.set(number, JSON.stringify(replacement));
+	res.writeHead(200, {
+		'Content-Type': 'application/json'
+	});
+	res.end(JSON.stringify(replacement));
+}
+
+export async function del(req, res) {
+	let { id } = req.params;
+	let number = id++;
+	if (lookup.has(number)) {
+		lookup.delete(number);
+		res.writeHead(200, {
+			'Content-Type': 'application/json'
+		});
+		res.end(JSON.stringify({
+			message: `Delete Successful`
+		}));
 	}
 	else {
 		res.writeHead(404, {

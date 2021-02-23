@@ -5,13 +5,12 @@
     import Textfield from '@smui/textfield';
     import IconButton, {Icon} from '@smui/icon-button';
     import cars from './_cars.js';
-    import { all } from './[id([0-9]+)].json'
-    console.log(all())
+    import { all } from './[id([0-9]+)].json';
 
     let carList = [...cars];
     let filter = "";
-    $: filtered = filter ? carList.filter(mov => {
-        return mov.name.toLowerCase().includes(filter.toLowerCase())
+    $: filtered = filter ? carList.filter(car => {
+        return car.brand.toLowerCase().includes(filter.toLowerCase())
     }) : carList;
 
     let dialog;
@@ -63,6 +62,11 @@
         carList = [...carList,
             car
         ];
+        let url = `offer/${car.id}.json`;
+        let res = (async () => {
+            let test = await fetch(url, { method: "POST", headers: {'Content-Type': 'application/json'}, body: JSON.stringify(car)});
+            return test;
+        })()
     }
 
     function update(event) {
@@ -74,10 +78,9 @@
             }
         })
         carList[i] = car;
-        let url = `inventory/${car.id}.json`;
+        let url = `offer/${car.id}.json`;
         let res = (async () => {
             let test = await fetch(url, { method: "PUT", headers: {'Content-Type': 'application/json'}, body: JSON.stringify(car)});
-            console.log(test);
             return test;
         })()
     }
@@ -85,6 +88,11 @@
     function remove(car) {
         let i = carList.indexOf(car);
         carList = [...carList.slice(0, i), ...carList.slice(i+1)];
+        let url = `offer/${car.id}.json`;
+        let res = (async () => {
+            let test = await fetch(url, { method: "DELETE", headers: {'Content-Type': 'application/json'}});
+            return test;
+        })()
     }
 </script>
 
@@ -129,6 +137,56 @@
     .pl-5 {
         padding-left: 5px;
     }
+    .flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+
+.flex-item {
+  padding: 5px;
+  margin: 5px;
+  height: auto;
+  margin-top: 10px;
+  color: #000000;
+  /* min-width: 300px; */
+  /* font-size: 3em; */
+  text-align: center;
+  flex: 1 1 0;
+  order: 2;
+}
+
+.prominent {
+  flex-grow: 2;
+}
+
+.text-center {
+  text-align: center;
+}
+
+@media only screen and (max-width: 1200px) {
+  .flex-item {
+    width: 100%;
+    min-width: 95%;
+  }
+
+  .prominent {
+    order: 1;
+  }
+}
+
+@media only screen and (min-width: 1201px) {
+  .flex-item {
+    width: 50%;
+    min-width: 45%;
+  }
+
+  .prominent {
+    order: 1;
+  }
+}
 </style>
 
 <div class="m-10">
@@ -154,7 +212,7 @@
                             <h4 class="mdc-typography--headline4">{car.brand} {car.model}</h4>
                             <p class="mdc-typography--subtitle1">{car.year}</p>
                             <h6 class="mdc-typography--headline6">{car.color}</h6>
-                            <a href="inventory/{car.id}"><Button>See Details</Button></a>
+                            <a href="offer/{car.id}"><Button>See Details</Button></a>
                         </Content>
                     </Card>
                 </div>

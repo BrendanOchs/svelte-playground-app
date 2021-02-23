@@ -4,7 +4,7 @@
     export async function preload(page, session) {
         id = page.params.id
         promise = (async () => {
-	    const res = await this.fetch(`inventory/${id}.json`)
+	    const res = await this.fetch(`offer/${id}.json`)
         return await res.json()
 	})()
     }
@@ -13,6 +13,19 @@
 <script>
     import IconButton from '@smui/icon-button';
 </script>
+
+<svelte:head>
+    <title>Offer</title>
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" />
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Roboto+Mono" />
+</svelte:head>
 
 <style type="scss">
     @import "@material/typography/mdc-typography";
@@ -30,9 +43,12 @@
     .text-left {
         text-align: left;
     }
+    .text-center {
+        text-align: center;
+    }
 </style>
 
-<a href="inventory"><IconButton class="material-icons">west</IconButton></a>
+<a href="offer"><IconButton class="material-icons">west</IconButton></a>
 <h1>
 {#await promise}
     <h4 class="text-center">Loading...</h4>
