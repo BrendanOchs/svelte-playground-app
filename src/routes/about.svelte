@@ -34,7 +34,6 @@
 	h1 {
 		text-align: center;
 	}
-
 </style>
 
 <h1>About this site</h1>

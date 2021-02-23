@@ -15,10 +15,8 @@
 }
 
 .flex-item.center {
-  /* align-self: flex-start; */
   flex-grow: 2;
   min-width: 350px;
-  /* min-width: 800px; */
 }
 
 .flex-item.left,
@@ -29,22 +27,21 @@
 
 /* Tablet Media Quiry */
 
-@media only screen and (max-width: 930px) {
+@media only screen and (max-width: 1010px) {
   .flex-container {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
   .flex-item.center {
-    flex-grow: 0;
+    flex-grow: 3;
     order: 1;
-    /* width: 95%; */
   }
 
   .flex-item.left,
   .flex-item.right {
     min-width: auto;
     order: 2;
-    /* width: 50%; */
   }
 }
 
