@@ -4,9 +4,10 @@
     import Button from '@smui/button';
     import Textfield from '@smui/textfield';
     import IconButton, {Icon} from '@smui/icon-button';
-    import cars from './_cars.js';
+    // import cars from './_cars.js';
     import { all } from './[id([0-9]+)].json';
-
+    let cars = all();
+    console.log(all())
     let carList = [...cars];
     let filter = "";
     $: filtered = filter ? carList.filter(car => {

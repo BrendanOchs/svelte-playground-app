@@ -84,5 +84,10 @@ export async function del(req, res) {
 }
 
 export function all() {
-	return Array.from(lookup.values());
+	let array = [];
+	console.log(lookup.entries());
+	lookup.forEach(val => {
+		array.push(JSON.parse(val))
+	});
+	return array
 }
