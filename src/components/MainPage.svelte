@@ -1,3 +1,4 @@
+<!--Layout-->
 <section>
   <div class="flex-container">
     <div class="flex-item">1</div>
@@ -5,8 +6,10 @@
     <div class="flex-item">3</div>
   </div>
 </section>
+<!--End layout-->
 
-<section>
+<!--Data table-->
+<section class="table">
   <div>
     <DataTable table$aria-label="Shoes"></DataTable>
     <h2>Data Table</h2>
@@ -24,19 +27,23 @@
               <Cell>{shoe.brand}</Cell>
               <Cell><p>{shoe.color}</p></Cell>
               <Cell><p>{shoe.material}</p></Cell>
-              <Cell><button on:click = {()=> selectedShoe(shoe)}>See Details</button></Cell>
+              <Cell><Button on:click = {()=> selectedShoe(shoe)}>See Details</Button></Cell>
             </Row>
           {/each}
       </Body>
     </div>
 </section>
+<!--End data table-->
 
+<!--Modal-->
 <Modal bind:this={modal}>
   <h3>My Title</h3>
   <p>These shoes are from {selectedItem.brand}, are {selectedItem.color}, and are made of {selectedItem.material}.</p>
 </Modal>
+<!--End modal-->
 
-<section>
+<!--Crud-->
+<section class="crud">
   <Textfield bind:value={searchedShoe} label="Filter"></Textfield>
 
   <List bind:value={i} size={5}>
@@ -57,6 +64,16 @@
     <Button on:click={remove} disabled="{!selected}"><Label>Delete</Label></Button>
   </div>
 </section>
+<!--End crud-->
+
+<style>
+  .crud {
+    margin-left: 10px;
+  }
+  .table {
+    margin-left: 10px;
+  }
+</style>
 
 <script>
   import DataTable, {Head, Body, Row, Cell} from '@smui/data-table';
