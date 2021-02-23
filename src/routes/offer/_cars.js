@@ -15,7 +15,7 @@ let cars = [
       year: 1995,
       price: 0,
       color: "Black",
-      img: ""
+      img: "http://carphotos.cardomain.com/ride_images/4/623/1089/39055544001_original.jpg?v=1"
   },
   {
       id: 2,
@@ -24,7 +24,7 @@ let cars = [
       year: 2009,
       price: 7000,
       color: "Red",
-      img: ""
+      img: "https://cdn05.carsforsale.com/00a03ebce2e7856ec6b1b85ffa5f9b5df1/800x600/2009-saturn-outlook-xr-4dr-suv.jpg"
   }
 ];
 export default cars;

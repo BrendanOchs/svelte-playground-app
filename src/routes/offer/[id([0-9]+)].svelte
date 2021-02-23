@@ -46,6 +46,13 @@
     .text-center {
         text-align: center;
     }
+    img {
+        width: 100%;
+    }
+    .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
 </style>
 
 <a href="offer"><IconButton class="material-icons">west</IconButton></a>
@@ -53,12 +60,14 @@
 {#await promise}
     <h4 class="text-center">Loading...</h4>
 {:then car}
-    <div class="text-center">
+    <div class="text-center split">
         <img src={car.img} title="Car" alt="Car"/>
-        <h3 class="mdc-typography--headline3"><strong>{car.brand}</strong> {car.model}</h3>
-        <p class="norm-fw mdc-typography--subtitle2">{car.year}</p>
-        <h6 class="norm-fw mdc-typography--headline6">{car.color}</h6>
-        <h6 class="norm-fw spacing mdc-typography--headline6 text-left">${car.price}</h6>
+        <div>
+            <h3 class="mdc-typography--headline3"><strong>{car.brand}</strong> {car.model}</h3>
+            <p class="norm-fw mdc-typography--subtitle2">{car.year}</p>
+            <h6 class="norm-fw mdc-typography--headline6">{car.color}</h6>
+            <h2 class="norm-fw spacing mdc-typography--headline2">${car.price}</h2>
+        </div>
     </div>
 {/await}
 </h1>
