@@ -7,7 +7,6 @@
     // import cars from './_cars.js';
     import { all } from './[id([0-9]+)].json';
     let cars = all();
-    console.log(all())
     let carList = [...cars];
     let filter = "";
     $: filtered = filter ? carList.filter(car => {
