@@ -11,6 +11,50 @@
         href="https://fonts.googleapis.com/css?family=Roboto+Mono" />
 </svelte:head>
 
-<h1>FAQ</h1>
+<script>
 
-<p>Faq text will go here</p>
+</script>
+
+<style>
+    .container {
+        margin-left: 10px;
+    }
+    .answer {
+        margin-left: 30px;
+    }
+</style>
+
+<div class="container">
+    <h1>Frequently Asked Questions</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?</p>
+</div>
+
+<div class="answer">
+    <p>Eu sem integer vitae justo eget magna.</p>
+</div>
+
+<div class="container">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?</p>
+</div>
+
+<div class="answer">
+    <p>Eu sem integer vitae justo eget magna.</p>
+</div>
+
+
+<div class="container">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?</p>
+</div>
+
+<div class="answer">
+    <p>Eu sem integer vitae justo eget magna.</p>
+</div>
+
+
+<div class="container">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?</p>
+</div>
+
+<div class="answer">
+    <p>Eu sem integer vitae justo eget magna.</p>
+</div>
