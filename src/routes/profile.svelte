@@ -1,3 +1,5 @@
+<script>
+</script>
 <svelte:head>
     <title>Profile</title>
     <link
@@ -14,3 +16,4 @@
 <h1>Profile</h1>
 
 <p>This is the 'profile' page. There's not much here.</p>
+ 
