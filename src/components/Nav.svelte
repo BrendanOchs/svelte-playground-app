@@ -1,9 +1,11 @@
 <script>
 	export let segment;
-
 	import Button, { Label } from "@smui/button";
 	import TopAppBar, { Row, Section, Title } from "@smui/top-app-bar";
 	import IconButton from "@smui/icon-button";
+	export function pageSwitch(){
+        
+    }
 </script>
 
 <div class="flexy">
