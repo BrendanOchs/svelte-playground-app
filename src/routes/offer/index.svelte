@@ -5,9 +5,9 @@
     import Textfield from '@smui/textfield';
     import IconButton, {Icon} from '@smui/icon-button';
     // import cars from './_cars.js';
-    import { all } from './[id([0-9]+)].json';
-    let cars = all();
-    let carList = [...cars];
+    // import { all } from './[id([0-9]+)].json';
+    let carList;
+    getAll();
     let filter = "";
     $: filtered = filter ? carList.filter(car => {
         return car.brand.toLowerCase().includes(filter.toLowerCase())
@@ -64,8 +64,8 @@
         ];
         let url = `offer/${car.id}.json`;
         let res = (async () => {
-            let test = await fetch(url, { method: "POST", headers: {'Content-Type': 'application/json'}, body: JSON.stringify(car)});
-            return test;
+            let val = await fetch(url, { method: "POST", headers: {'Content-Type': 'application/json'}, body: JSON.stringify(car)});
+            return val;
         })()
     }
 
@@ -80,8 +80,8 @@
         carList[i] = car;
         let url = `offer/${car.id}.json`;
         let res = (async () => {
-            let test = await fetch(url, { method: "PUT", headers: {'Content-Type': 'application/json'}, body: JSON.stringify(car)});
-            return test;
+            let val = await fetch(url, { method: "PUT", headers: {'Content-Type': 'application/json'}, body: JSON.stringify(car)});
+            return val;
         })()
     }
 
@@ -90,9 +90,18 @@
         carList = [...carList.slice(0, i), ...carList.slice(i+1)];
         let url = `offer/${car.id}.json`;
         let res = (async () => {
-            let test = await fetch(url, { method: "DELETE", headers: {'Content-Type': 'application/json'}});
-            return test;
+            let val = await fetch(url, { method: "DELETE", headers: {'Content-Type': 'application/json'}});
+            return val;
         })()
+    }
+
+    async function getAll() {
+        if (process.browser) {
+            let res = await fetch(`offer/-1.json`);
+            let body = await res.json();
+            carList = body.val;
+            return res;
+        }
     }
 </script>
 

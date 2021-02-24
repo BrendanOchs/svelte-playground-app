@@ -61,7 +61,7 @@
     <h4 class="text-center">Loading...</h4>
 {:then car}
     <div class="text-center split">
-        <img src={car.img} title="Car" alt="Car"/>
+        <img src={car.img} alt="{car.brand} {car.model}"/>
         <div>
             <h3 class="mdc-typography--headline3"><strong>{car.brand}</strong> {car.model}</h3>
             <p class="norm-fw mdc-typography--subtitle2">{car.year}</p>
