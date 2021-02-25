@@ -24,6 +24,9 @@
 	.flex-container {
 		justify-content: center;
 	}
+	.flex-item {
+		width: 30%;
+	}
 
 </style>
 

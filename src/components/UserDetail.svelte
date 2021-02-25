@@ -6,7 +6,9 @@
  
 <style>
     .dropbtn {
-        margin-left: 205px;
+        margin-left: 195px;
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
     .dropbtn:hover{
         background-color: yellow;
@@ -18,7 +20,7 @@
     .container {
         border: 1px solid black
     }
-    h5{
+    h4 {
         text-align: center;
         margin: 0 auto;
     }
@@ -28,9 +30,11 @@
     }
     .img-responsive {
         border-radius: 50%;
-        width: 100%;
+        width: 50%;
         max-width: 400px;
         margin: 0 0 1em 0;
+        margin-left: 115px;
+        margin-top: 10px;
     }
     .showProfile {
         display:none;
@@ -39,10 +43,10 @@
  
 <div class="container">
     <img class="img-responsive" src="person.jpg" alt="placeholder"> 
-    <h5>{user.name}</h5>
+    <h4>{user.name}</h4>
     <p>{user.role}</p>
     <div class="dropdown">
-    <button on:click="{showBio}" class="dropbtn">Show Bio</button>
+    <button on:click="{showBio}" class="dropbtn">Hide Bio</button>
     <p class:showProfile={showProfile}>{user.bio}</p>
     </div>
 </div>
