@@ -12,7 +12,8 @@
     "compression": "^1.7.1",
     "polka": "next",
     "sirv": "^1.0.0",
-    "svelte-material-icons": "^1.0.3"
+    "svelte-material-icons": "^1.0.3",
+    "sveltefire": "^0.1.5"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

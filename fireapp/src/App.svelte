@@ -18,6 +18,37 @@
   };
 
   firebase.initializeApp(firebaseConfig);
+
+  let email='';
+  let password='';
+
+  function signUp(){
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+    // Signed in 
+    var user = userCredential.user;
+     //...
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ..
+  });
+  }
+
+  function login(){
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+    // Signed in
+    var user = userCredential.user;
+    // ...
+  })
+    .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+  });
+  }
+
 </script>
 
 <main>
@@ -50,10 +81,14 @@
       <button on:click={() => auth.signOut()}>Sign Out</button>
 
       <div slot="signed-out">
+        Email<br>
+        <input type="email" bind:value={email}>
+        Password<br>
+        <input type="password" bind:value={password}>
 
-        <button on:click={() => auth.signInAnonymously()}>
-          Sign In Anonymously
-        </button>
+        <button on:click={signUp()}>Sign Up</button>
+
+        <button on:click={login()}>Login</button>
       </div>
 
       <hr />
