@@ -16,45 +16,34 @@
 </script>
 
 <style>
-    .container {
+    .heading {
         margin-left: 10px;
     }
-    .answer {
-        margin-left: 30px;
+    .container {
+        margin-left: 100px;
+        margin-right: 100px;
+        border: 1px solid black;
     }
 </style>
 
-<div class="container">
+<div class="heading">
     <h1>Frequently Asked Questions</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?</p>
-</div>
-
-<div class="answer">
-    <p>Eu sem integer vitae justo eget magna.</p>
+    <p>Here are the questions we are asked the most.</p>
 </div>
 
 <div class="container">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?</p>
-</div>
-
-<div class="answer">
+    <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?</h4>
     <p>Eu sem integer vitae justo eget magna.</p>
-</div>
-
-
-<div class="container">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?</p>
-</div>
-
-<div class="answer">
+    <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?</h4>
+    <p>1. Vitae justo eget magna</p>
+    <p>2. Adipiscing elit sed</p>
+    <p>3. Eu sem integer</p>
+    <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?</h4>
     <p>Eu sem integer vitae justo eget magna.</p>
-</div>
-
-
-<div class="container">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?</p>
-</div>
-
-<div class="answer">
+    <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?</h4>
     <p>Eu sem integer vitae justo eget magna.</p>
+    <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?</h4>
+    <p>Eu sem integer vitae justo eget magna.</p>
+    <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?</h4>
+    <p>Video will go here</p>
 </div>
