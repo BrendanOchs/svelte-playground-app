@@ -18,6 +18,19 @@
     import {slide} from 'svelte/transition';
 
     let pressed = false;
+    let pressed2 = false;
+    let pressed3 = false;
+
+    let icon1 = "add";
+    let icon2 = "add";
+    let icon3 = "add";
+
+    if (pressed == true) {
+        icon1 = "remove";
+    } else if (pressed2 == true) {
+        icon2 = "remove";
+    }
+
 </script>
 
 <style>
@@ -49,7 +62,9 @@
 <div class="flex-container faq">
     <div class="flex-item">
         <Card style="width: 100%" padded>
-            <Content>Lorem ipsum dolor sit amet, consectetur adipiscing elit?<IconButton class="material-icons" on:click={() =>  pressed = !pressed}>add</IconButton></Content>
+            <Content>Lorem ipsum dolor sit amet, consectetur adipiscing elit?
+                <IconButton class="material-icons" on:click={() =>  pressed = !pressed}>{icon1}</IconButton>
+            </Content>
             {#if pressed == true}
                 <div transition:slide>
                     <p>Eu sem integer vitae justo eget magna.</p>
@@ -58,23 +73,34 @@
         </Card>
     </div>
     <div class="flex-item">
-        <Card padded>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?
-            <p>1. Vitae justo eget magna</p>
-            <p>2. Adipiscing elit sed</p>
-            <p>3. Eu sem integer</p>
+        <Card style="width: 100%" padded>
+            <Content>Lorem ipsum dolor sit amet, consectetur adipiscing elit?
+                <IconButton class="material-icons" on:click={() =>  pressed2 = !pressed2}>{icon2}</IconButton>
+            </Content>
+            {#if pressed2 == true}
+                <div transition:slide>
+                    <p>1. Vitae justo eget magna</p>
+                    <p>2. Adipiscing elit sed</p>
+                    <p>3. Eu sem integer</p>
+                </div>
+            {/if}
         </Card>
     </div>
     <div class="flex-item">
-        <Card padded>
-
+        <Card style="width: 100%" padded>
+            <Content>Lorem ipsum dolor sit amet, consectetur adipiscing elit?<IconButton class="material-icons" on:click={() =>  pressed3 = !pressed3}></IconButton></Content>
+            {#if pressed3 == true}
+                <div transition:slide>
+                    <p>Eu sem integer vitae justo eget magna.</p>
+                </div>
+            {/if}
         </Card>
     </div>
     
     
 </div>
 
-<div class="container">
+<!-- <div class="container">
     <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h4>
     <p>Eu sem integer vitae justo eget magna.</p>
     <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?</h4>
@@ -89,4 +115,4 @@
     <p>Eu sem integer vitae justo eget magna.</p>
     <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?</h4>
     <p>Video will go here</p>
-</div>
+</div> -->
