@@ -25,12 +25,6 @@
     let icon2 = "add";
     let icon3 = "add";
 
-    if (pressed == true) {
-        icon1 = "remove";
-    } else if (pressed2 == true) {
-        icon2 = "remove";
-    }
-
 </script>
 
 <style>
@@ -51,6 +45,10 @@
         background-color: #f8f8f8;
         margin-right: 20px;
         margin-bottom: 20px;
+    }
+
+    .material-icons {
+        float: right;
     }
 </style>
 
@@ -88,7 +86,7 @@
     </div>
     <div class="flex-item">
         <Card style="width: 100%" padded>
-            <Content>Lorem ipsum dolor sit amet, consectetur adipiscing elit?<IconButton class="material-icons" on:click={() =>  pressed3 = !pressed3}></IconButton></Content>
+            <Content>Lorem ipsum dolor sit amet, consectetur adipiscing elit?<IconButton class="material-icons" on:click={() =>  pressed3 = !pressed3}>{icon3}</IconButton></Content>
             {#if pressed3 == true}
                 <div transition:slide>
                     <p>Eu sem integer vitae justo eget magna.</p>
