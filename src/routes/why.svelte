@@ -32,16 +32,32 @@
         width: 500px;
         margin-top: 75px;
     }
+
+    @media only screen and (max-width: 850px) {
+        .flex-item.left {
+            width: auto;
+        }
+    }
 </style>
 
 <div class="flex-container">
     <div class="flex-item left">
         <h1>Why?</h1>
         <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla pharetra diam sit amet nisl suscipit adipiscing bibendum est. Platea dictumst vestibulum rhoncus est pellentesque elit. Sem et tortor consequat id. Mauris a diam maecenas sed enim. Et sollicitudin ac orci phasellus. Porta nibh venenatis cras sed felis eget velit. Orci eu lobortis elementum nibh tellus. Eget egestas purus viverra accumsan in nisl nisi. Ultrices eros in cursus turpis massa tincidunt dui ut ornare.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        Nulla pharetra diam sit amet nisl suscipit adipiscing bibendum est. Platea dictumst vestibulum rhoncus est pellentesque elit. 
+        Sem et tortor consequat id. Mauris a diam maecenas sed enim. Et sollicitudin ac orci phasellus. Porta nibh venenatis cras sed 
+        felis eget velit. Orci eu lobortis elementum nibh tellus. Eget egestas purus viverra accumsan in nisl nisi. Ultrices eros in
+        cursus turpis massa tincidunt dui ut ornare.
         </p>
         <p>
-        Ipsum dolor sit amet consectetur adipiscing elit duis. Eu sem integer vitae justo eget magna. Ultricies mi eget mauris pharetra et ultrices. Ac tincidunt vitae semper quis lectus nulla. Gravida in fermentum et sollicitudin ac orci phasellus egestas tellus. Elit ullamcorper dignissim cras tincidunt lobortis. Faucibus interdum posuere lorem ipsum dolor. Ut diam quam nulla porttitor. Adipiscing tristique risus nec feugiat in fermentum. Viverra orci sagittis eu volutpat odio facilisis mauris sit amet. Sit amet aliquam id diam maecenas ultricies mi eget mauris. Condimentum mattis pellentesque id nibh tortor id. Condimentum id venenatis a condimentum. Aliquam faucibus purus in massa. Tellus cras adipiscing enim eu turpis. In iaculis nunc sed augue lacus. Feugiat nisl pretium fusce id velit ut tortor.
+        Ipsum dolor sit amet consectetur adipiscing elit duis. Eu sem integer vitae justo eget magna. Ultricies mi eget mauris
+         pharetra et ultrices. Ac tincidunt vitae semper quis lectus nulla. Gravida in fermentum et sollicitudin ac orci phasellus
+          egestas tellus. Elit ullamcorper dignissim cras tincidunt lobortis. Faucibus interdum posuere lorem ipsum dolor. Ut diam 
+          quam nulla porttitor. Adipiscing tristique risus nec feugiat in fermentum. Viverra orci sagittis eu volutpat odio facilisis
+           mauris sit amet. Sit amet aliquam id diam maecenas ultricies mi eget mauris. Condimentum mattis pellentesque id nibh tortor
+            id. Condimentum id venenatis a condimentum. Aliquam faucibus purus in massa. Tellus cras adipiscing enim eu turpis. In 
+            iaculis nunc sed augue lacus. Feugiat nisl pretium fusce id velit ut tortor.
         </p>
     </div>
     <div class="flex-item right">
