@@ -4,6 +4,7 @@
     import Button from '@smui/button';
     import Textfield from '@smui/textfield';
     import IconButton, {Icon} from '@smui/icon-button';
+import ProgressBar from '../../components/ProgressBar.svelte';
     // import cars from './_cars.js';
     // import { all } from './[id([0-9]+)].json';
     let carList;
@@ -42,7 +43,8 @@
                 year: 2000,
                 price: 0,
                 color: "",
-                img: ""
+                img: "",
+                completion: 0
             }
         }
         data.reason = reason;
@@ -148,55 +150,55 @@
         padding-left: 5px;
     }
     .flex-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  padding: 0;
-  margin: 0;
-}
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        padding: 0;
+        margin: 0;
+    }
 
-.flex-item {
-  padding: 5px;
-  margin: 5px;
-  height: auto;
-  margin-top: 10px;
-  color: #000000;
-  /* min-width: 300px; */
-  /* font-size: 3em; */
-  text-align: center;
-  flex: 1 1 0;
-  order: 2;
-}
+    .flex-item {
+        padding: 5px;
+        margin: 5px;
+        height: auto;
+        margin-top: 10px;
+        color: #000000;
+        /* min-width: 300px; */
+        /* font-size: 3em; */
+        text-align: center;
+        flex: 1 1 0;
+        order: 2;
+    }
 
-.prominent {
-  flex-grow: 2;
-}
+    .prominent {
+        flex-grow: 2;
+    }
 
-.text-center {
-  text-align: center;
-}
+    .text-center {
+        text-align: center;
+    }
 
-@media only screen and (max-width: 1200px) {
-  .flex-item {
-    width: 100%;
-    min-width: 95%;
-  }
+    @media only screen and (max-width: 1200px) {
+        .flex-item {
+            width: 100%;
+            min-width: 95%;
+        }
 
-  .prominent {
-    order: 1;
-  }
-}
+        .prominent {
+            order: 1;
+        }
+    }
 
-@media only screen and (min-width: 1201px) {
-  .flex-item {
-    width: 50%;
-    min-width: 45%;
-  }
+    @media only screen and (min-width: 1201px) {
+        .flex-item {
+            width: 50%;
+            min-width: 45%;
+        }
 
-  .prominent {
-    order: 1;
-  }
-}
+        .prominent {
+            order: 1;
+        }
+    }
 </style>
 
 <div class="m-10">
@@ -219,10 +221,12 @@
                             </ActionIcons>
                         </Actions>
                         <Content>
+                            <h2 class="mdc-typography--headline2">{car.vin}</h2>
                             <h4 class="mdc-typography--headline4">{car.brand} {car.model}</h4>
                             <p class="mdc-typography--subtitle1">{car.year}</p>
                             <h6 class="mdc-typography--headline6">{car.color}</h6>
                             <a href="offer/{car.vin}"><Button>See Details</Button></a>
+                            <ProgressBar percent={car.completion} />
                         </Content>
                     </Card>
                 </div>

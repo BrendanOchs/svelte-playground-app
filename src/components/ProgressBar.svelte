@@ -1,6 +1,9 @@
 <script>
     export let percent;
     export let color;
+    if (!color) {
+        color = percent > 50 ? "lime" : (percent == 50 ? "yellow" : "red") 
+    }
 </script>
 
 <style>
