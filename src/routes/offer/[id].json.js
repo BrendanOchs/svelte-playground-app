@@ -2,22 +2,21 @@ import cars from './_cars.js';
 
 const lookup = new Map();
 cars.forEach(car => {
-	lookup.set(car.id, JSON.stringify(car));
+	lookup.set(car.vin, JSON.stringify(car));
 });
 
 export function get(req, res) {
 	let { id } = req.params;
-	let number = id++;
-	if (number == -1) {
+	if (id == "-1") {
 		res.writeHead(200);
 		let array = all();
 		res.end(JSON.stringify({val: array}));
 	}
-	else if (lookup.has(number)) {
+	else if (lookup.has(id)) {
 		res.writeHead(200, {
 			'Content-Type': 'application/json'
 		});
-		res.end(lookup.get(number));
+		res.end(lookup.get(id));
 	}
 	else {
 		res.writeHead(404, {
@@ -32,10 +31,8 @@ export function get(req, res) {
 export async function put(req, res) {
 	let { id } = req.params;
 	let replacement = req.body;
-	let number = id++;
-	if (lookup.has(number)) {
-		lookup.delete(number);
-		lookup.set(number, JSON.stringify(replacement));
+	if (lookup.has(id)) {
+		lookup.set(id, JSON.stringify(replacement));
 		res.writeHead(200, {
 			'Content-Type': 'application/json'
 		});
@@ -55,8 +52,7 @@ export async function put(req, res) {
 export async function post(req, res) {
 	let { id } = req.params;
 	let replacement = req.body;
-	let number = id++;
-	lookup.set(number, JSON.stringify(replacement));
+	lookup.set(id, JSON.stringify(replacement));
 	res.writeHead(200, {
 		'Content-Type': 'application/json'
 	});
@@ -64,10 +60,9 @@ export async function post(req, res) {
 }
 
 export async function del(req, res) {
-	let { id } = req.params;
-	let number = id++;
-	if (lookup.has(number)) {
-		lookup.delete(number);
+	let { id } = req.params;;
+	if (lookup.has(id)) {
+		lookup.delete(id);
 		res.writeHead(200, {
 			'Content-Type': 'application/json'
 		});
@@ -91,6 +86,6 @@ export function all() {
 	lookup.forEach(val => {
 		array.push(JSON.parse(val))
 	});
-	array.sort((a, b) => (a.id > b.id) ? 1 : -1);
+	array.sort((a, b) => (a.vin > b.vin) ? 1 : -1);
 	return array
 }

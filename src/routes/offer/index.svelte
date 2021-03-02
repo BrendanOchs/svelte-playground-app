@@ -10,7 +10,7 @@
     getAll();
     let filter = "";
     $: filtered = filter ? carList.filter(car => {
-        return car.brand.toLowerCase().includes(filter.toLowerCase())
+        return car.vin.toLowerCase().includes(filter.toLowerCase())
     }) : carList;
 
     let dialog;
@@ -36,12 +36,13 @@
         }
         else {
             data.car = {
-                brand: "Brand",
-                model: "Model",
+                vin: "",
+                brand: "",
+                model: "",
                 year: 2000,
                 price: 0,
-                color: "Color",
-                img: "https://www.motortrend.com/uploads/sites/5/2002/10/112_0102_first_drive_2001_toyota_highlander-2001_toyota_highlander-front_side_view.jpg?fit=around%7C875:492"
+                color: "",
+                img: ""
             }
         }
         data.reason = reason;
@@ -51,18 +52,18 @@
 
     function create(event) {
         let car = event.detail;
-        let id;
-        if (carList.length === 0) {
-            id = 0;
-        }
-        else {
-            id = carList[carList.length - 1].id + 1
-        }
-        car.id = id;
+        // let id;
+        // if (carList.length === 0) {
+        //     id = 0;
+        // }
+        // else {
+        //     id = carList[carList.length - 1].id + 1
+        // }
+        // car.id = id;
         carList = [...carList,
             car
         ];
-        let url = `offer/${car.id}.json`;
+        let url = `offer/${car.vin}.json`;
         let res = (async () => {
             let val = await fetch(url, { method: "POST", headers: {'Content-Type': 'application/json'}, body: JSON.stringify(car)});
             return val;
@@ -73,12 +74,12 @@
         let car = event.detail;
         let i;
         carList.forEach((c, index) => {
-            if (c.id === car.id) {
+            if (c.vin === car.vin) {
                 i = index;
             }
         })
         carList[i] = car;
-        let url = `offer/${car.id}.json`;
+        let url = `offer/${car.vin}.json`;
         let res = (async () => {
             let val = await fetch(url, { method: "PUT", headers: {'Content-Type': 'application/json'}, body: JSON.stringify(car)});
             return val;
@@ -88,7 +89,7 @@
     function remove(car) {
         let i = carList.indexOf(car);
         carList = [...carList.slice(0, i), ...carList.slice(i+1)];
-        let url = `offer/${car.id}.json`;
+        let url = `offer/${car.vin}.json`;
         let res = (async () => {
             let val = await fetch(url, { method: "DELETE", headers: {'Content-Type': 'application/json'}});
             return val;
@@ -221,7 +222,7 @@
                             <h4 class="mdc-typography--headline4">{car.brand} {car.model}</h4>
                             <p class="mdc-typography--subtitle1">{car.year}</p>
                             <h6 class="mdc-typography--headline6">{car.color}</h6>
-                            <a href="offer/{car.id}"><Button>See Details</Button></a>
+                            <a href="offer/{car.vin}"><Button>See Details</Button></a>
                         </Content>
                     </Card>
                 </div>

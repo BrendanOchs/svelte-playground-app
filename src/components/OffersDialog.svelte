@@ -26,7 +26,7 @@
         content: "Body text",
         actions: ["No", "Yes"],
         car: {
-            id: 0,
+            vin: "",
             brand: "",
             model: "",
             year: 2000,
@@ -68,17 +68,19 @@
             <div class="split">
                 <!-- <span class="m-10"><Textfield bind:value={data.car.brand} label="Brand" /></span> -->
                 <span class="m-10">
-                    <Select bind:value={data.car.brand} label="Brand">
+                    <Select bind:value={data.car.brand} label="Brand" required>
+                        <Option value="" selected>Please select a brand</Option>
                         {#each brands as brand}
                             <Option value={brand.name}><img src={brand.icon} alt="{brand.name} Icon">{brand.name}</Option>
                         {/each}
                     </Select>
                 </span>
-                <span class="m-10"><Textfield bind:value={data.car.model} label="Model" /></span>
-                <span class="m-10"><Textfield type="number" input$step="1" input$min="1900" input$max="2100" bind:value={data.car.year} label="Year" /></span>
-                <span class="m-10"><Textfield bind:value={data.car.color} label="Color" /></span>
-                <span class="m-10"><Textfield type="number" input$step="1000" input$min="0" bind:value={data.car.price} label="Price" /></span>
-                <span class="m-10"><Textfield type="url" bind:value={data.car.img} label="Link" /></span>
+                <span class="m-10"><Textfield bind:value={data.car.model} label="Model" input$required /></span>
+                <span class="m-10"><Textfield type="number" input$step="1" input$min="1900" input$max="2100" bind:value={data.car.year} label="Year" input$required /></span>
+                <span class="m-10"><Textfield bind:value={data.car.color} label="Color" input$required /></span>
+                <span class="m-10"><Textfield type="number" input$step="1000" input$min="0" bind:value={data.car.price} label="Price" input$required /></span>
+                <span class="m-10"><Textfield type="url" bind:value={data.car.img} label="Link" input$required /></span>
+                <span class="m-10"><Textfield bind:value={data.car.vin} label="VIN" input$required /></span>
             </div>
         {:else}
             {data.content}

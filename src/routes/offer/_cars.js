@@ -1,6 +1,6 @@
 let cars = [
   {
-      id: 0,
+      vin: "1GD372CG4D1122188",
       brand: "Toyota",
       model: "Highlander",
       year: 2001,
@@ -9,7 +9,7 @@ let cars = [
       img: "https://www.motortrend.com/uploads/sites/5/2002/10/112_0102_first_drive_2001_toyota_highlander-2001_toyota_highlander-front_side_view.jpg?fit=around%7C875:492"
   },
   {
-      id: 1,
+      vin: "2C3CCAAG4EH378917",
       brand: "Honda",
       model: "Civic",
       year: 1995,
@@ -18,7 +18,7 @@ let cars = [
       img: "http://carphotos.cardomain.com/ride_images/4/623/1089/39055544001_original.jpg?v=1"
   },
   {
-      id: 2,
+      vin: "1C3CDFBAXDD171156",
       brand: "Saturn",
       model: "Outlook",
       year: 2009,
