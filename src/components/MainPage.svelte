@@ -8,6 +8,7 @@
     import Cta from "./Cta.svelte";
     import Pos from "./Pos.svelte";
     export let segment;
+    import ProgressBar from "../components/ProgressBar.svelte";
 </script>
 
 <style>
@@ -29,3 +30,5 @@
         <OfferCompletion {segment} />
     </div>
 </div>
+
+<ProgressBar />

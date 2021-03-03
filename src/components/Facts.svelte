@@ -1,12 +1,16 @@
 <script>
-    export let segment;
+    export function pageSwitch()
+    {
+        
+    }
 </script>
 
 <style>
-    div {
-        border: 1px solid gray;
-        border-radius: 2px;
-    }
+    
 </style>
+<div class="flex-container">
+<p>content</p>
+</div>
+<div class="flex-item">
 
-<div>Facts Component</div>
+</div>
