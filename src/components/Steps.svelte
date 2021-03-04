@@ -1,6 +1,9 @@
 <script>
     export let segment;
-    import {scale} from 'svelte/transition';
+    import {slide} from 'svelte/transition';
+    import slideSteps from 'images/slideSteps.png';
+    import slideWhy from 'images/slideWhy.png';
+    import slideWWA from 'images/slideWWA.png';
     let slideNum = 0;
     function nextSlide()
     {
@@ -31,17 +34,21 @@
         background-color: gray;
         height: 450px;
     }
+    img{
+        width:100%;
+        height:100%
+    }
 </style>
 
 <div class="steps">
     {#if slideNum == 0}
-        <div transition:scale>STEPS</div><!--This will be the component of the slide-->
+        <img transition:slide alt="Steps" src="{slideSteps}"><!--This will be the component of the slide-->
     {/if}
     {#if slideNum == 1}
-        <div transition:scale>WHY</div><!--This will be the component of the slide-->
+        <img transition:slide alt="Why" src="{slideWhy}"><!--This will be the component of the slide-->
     {/if}
     {#if slideNum == 2}
-        <div transition:scale>WHO WE ARE</div><!--This will be the component of the slide-->
+        <img transition:slide alt="Who We Are" src="{slideWWA}"><!--This will be the component of the slide-->
     {/if}
 </div>
 <button on:click={prevSlide}>prev</button>
